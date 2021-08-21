@@ -55,9 +55,35 @@
       <img src="https://theculturetrip.com/wp-content/uploads/2018/11/2013_npg_room_4_through_to_11.jpg" class="about-img" alt="Art Museum">
     </div>
   </section>
+  <!-- services section -->
+  <section id="services" class="section_3 services container">
+    <h2 class="services-title title">Services (Name) give to their customers</h2>
+    <div class="services-container">
+      <div class="service service-1">
+        <span>01</span>
+        <h2 class="service-title">Free Tour.</h2>
+        <p class="service-description">We always give you free tours because we love to see you happy</p>
+      </div>
+      <div class="service service-2">
+        <span>02</span>
+        <h2 class="service-title">We take care of you.</h2>
+        <p class="service-description">If you face any difficulty you can email us and we will surely reply. because you are the best</p>
+      </div>
+      <div class="service service-3">
+        <span>03</span>
+        <h2 class="service-title">Best Arts</h2>
+        <p class="service-description">We show you the best arts from all over the world and from the best museums in the world.</p>
+      </div>
+      <div class="service service-4">
+        <span>04</span>
+        <h2 class="service-title">Available Anytime.</h2>
+        <p class="service-description">We are available 24/7 unlike other museums so you can enjoy our museum anytime.</p>
+      </div>
+    </div>
+  </section>
   
   <style>
-    @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap");
 
 /*  ===== VARIABLE ======  */
 :root {
@@ -237,4 +263,275 @@ header {
   line-height: 1.5rem;
 }
 
+/* section 3 */
+.services {
+  margin: 3rem auto;
+}
+.services-title {
+  color: var(--primary-clr);
+  max-width: 19.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.02rem;
+  position: relative;
+  padding-bottom: 0.9rem;
+  margin-bottom: 5rem;
+}
+.services-title::before {
+  content: "";
+  position: absolute;
+  height: 0.3rem;
+  width: 12.9rem;
+  background-color: var(--orange-color);
+  position: absolute;
+  bottom: 0;
+}
+.services-container {
+  margin: 2rem 0;
+  display: grid;
+  /* place-items: end; */
+  row-gap: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+.service {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  max-width: 20rem;
+  position: relative;
+  padding: 2rem 2.5rem;
+  border: thin solid rgba(150, 139, 179, 0.1);
+}
+.service span {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: rgba(88, 90, 133, 0.219);
+  position: absolute;
+  top: 0.9rem;
+  left: 1.2rem;
+}
+.service-title {
+  color: var(--primary-clr);
+  margin: 1rem 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.005rem;
+}
+.service-description {
+  color: var(--primary-clr);
+  font-size: 1.09rem;
+  line-height: 1.5rem;
+  position: relative;
+  padding-bottom: 1rem;
+}
+.service-description::before {
+  content: "";
+  background-color: var(--orange-color);
+  left: 0;
+  right: 0;
+  height: 0.3rem;
+  position: absolute;
+  bottom: 0;
+}
+
+@media screen and (max-width: 768px) {
+  /*  ===== BASE ======  */
+  .container {
+    padding: 0.8rem 0.5rem;
+  }
+  /*  ===== HEADER ======  */
+  header {
+    padding: 0.8rem 0.5rem;
+  }
+  .menu-icons {
+    display: block;
+  }
+  .nav-bar {
+    background-color: var(--orange-color);
+    border-top-left-radius: 5px;
+    width: 80%;
+    height: 100vh;
+    position: absolute;
+    top: 4.5rem;
+    right: 0;
+    transform: scalex(0);
+    transform-origin: right;
+    transition: transform 300ms;
+    z-index: 1;
+  }
+  .show-menu {
+    transform: scalex(1);
+  }
+  .nav-items {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.5rem;
+  }
+  .nav-item {
+    margin: 0.8rem 2rem;
+  }
+  .nav-link {
+    background-image: none;
+    color: var(--primary-clr);
+    font-weight: 500;
+    font-size: 1.3rem;
+  }
+  .nav-link::before {
+    background-color: var(--primary-clr);
+  }
+  /*  ===== BODY ========  */
+  .home_img {
+    display: none;
+  }
+}
+@media screen and (min-width: 481px) {
+  header {
+    padding: 1.2rem 1.5rem;
+  }
+  /*  ===== BODY ========  */
+  .slogan {
+    padding: 0 1.5rem;
+  }
+  .slogan .slogan-title {
+    font-size: 2.2rem;
+    max-width: 38rem;
+  }
+  .slogan .slogan-text {
+    font-size: 1.15rem;
+    margin-top: 1.3rem;
+    max-width: 30rem;
+    line-height: 1.5rem;
+  }
+  .hero-btn {
+    width: 300px;
+    padding: 0.8rem 0;
+    border-radius: 5rem;
+    margin-top: 3rem;
+  }
+  .home-btn-link {
+    font-size: 1.3rem;
+  }
+  /* services */
+  .services-container {
+    column-gap: 1rem;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  header {
+    padding: 1.2rem 5rem;
+  }
+  /*  ===== BODY ========  */
+  .section_1 {
+    padding: 0 5rem;
+    height: 80vh;
+  }
+  .slogan {
+    margin-top: 8rem;
+  }
+  .slogan .slogan-title {
+    font-size: 3rem;
+  }
+  .hero-btn {
+    width: 280px;
+    margin-top: 1.8rem;
+  }
+  .home-btn-link {
+    font-size: 1.2rem;
+  }
+  /* - About - */
+  .section_2 {
+    height: 100vh;
+    background-color: var(--primary-clr);
+    position: relative;
+  }
+  .about {
+    background: linear-gradient(
+      -45deg,
+      hsla(0, 0%, 94%, 0.1),
+      hsla(0, 0%, 94%, 0.3)
+    );
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 10px;
+    border: thin solid rgb(239, 239, 239, 0.6);
+    padding: 2rem 1.5rem;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 20rem;
+    z-index: 1;
+  }
+  .about-container img {
+    display: block;
+    position: absolute;
+    max-width: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+  }
+  .about .about-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+  }
+  .feature_desc {
+    font-size: 1.05rem;
+    letter-spacing: 0.05rem;
+    opacity: 0.8;
+    max-width: 25rem;
+    line-height: 1.3rem;
+  }
+  /* section 3 */
+  .services {
+    margin: 3rem 0;
+  }
+  .service-title {
+    margin-top: 2rem;
+    font-size: 1.1rem;
+  }
+  .service span {
+    top: 1.5rem;
+    left: 1.3rem;
+  }
+  .service-description {
+    font-size: 0.9rem;
+  }
+  .services-container {
+    row-gap: 5rem;
+    column-gap: 1rem;
+    place-items: end;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
   </style>
+ 
+  <script>
+  "use strict";
+
+const navbar = document.querySelector(".nav-bar");
+
+const openMenu = document.querySelector(".bx-menu");
+const closeMenu = document.querySelector(".bx-x");
+
+// Open menu
+
+openMenu.addEventListener("click", (e) => {
+  if (e.target.classList.contains("bx-menu")) {
+    navbar.classList.add("show-menu");
+    openMenu.classList.add("hide-icon");
+    closeMenu.classList.add("show-icon");
+  }
+});
+
+// CLose menu
+
+closeMenu.addEventListener("click", (e) => {
+  if (e.target.classList.contains("bx-x")) {
+    navbar.classList.remove("show-menu");
+    openMenu.classList.remove("hide-icon");
+    closeMenu.classList.remove("show-icon");
+  }
+});
+
+</script>
