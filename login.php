@@ -7,7 +7,7 @@
         <title>name-Login</title>
         <link rel="stylesheet" href="style.css" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
-    </head>
+    
     </head>
     <body style="background-color: rgb(237, 245, 251); font-family: century gothic, Helvetica, sans-serif;">
         <div id="header">
