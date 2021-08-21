@@ -9,17 +9,17 @@
   <div class="hero">
     <header>
       <!-- logo -->
-      <a class="logo" href="#hero">Name</a>
+      <a class="logo" href="#">Name</a>
       <!-- navbar -->
       <nav class="nav-bar">
         <ul class="nav-items">
-          <li class="nav-item"><a href="#hero" class="nav-link">HOME</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">HOME</a></li>
           <li class="nav-item"><a href="#about-us" class="nav-link">ABOUT</a></li>
           <li class="nav-item"><a href="#services" class="nav-link">SERVICES</a></li>
           <li class="nav-item"><a href="#testimonials" class="nav-link">TESTIMONIALS</a></li>
           <li class="nav-item"><a href="#footer" class="nav-link">CONTACT</a></li>
-          <li class="nav-item"><a href="#footer" class="nav-link">REGISTER</a></li>
-          <li class="nav-item"><a href="#footer" class="nav-link">LOGIN</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">REGISTER</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">LOGIN</a></li>
         </ul>
       </nav>
       <div class="menu-icons">
@@ -81,9 +81,89 @@
       </div>
     </div>
   </section>
-  
-  <style>
-  @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap");
+  <!-- testimonials section -->
+  <section id="testimonials" class="section_4 testimonials container">
+    <div class="sub__container">
+      <h2 class="testy_title">Views of some of our customers</h2>
+      <div class="glide_slides">
+        <div class="testimonial bb1 glide_slide">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Rubio_Circle.png" alt="babysitter profile picture" class="profile">
+          <h2 class="testy-monial-name">John Doe</h2>
+          <h6>From Punjab</h6>
+          <br>
+          
+
+          
+          <p class="testy-monial-story">Their museum is so good, best art paintings I enjoyed a lot.</p>
+        </div>
+
+        <div class="testimonial glide_slide">
+          <img src="https://www.pngitem.com/pimgs/m/75-758282_walter-circle-person-photo-in-circle-hd-png.png?raw=true" alt="babysitter profile picture" class="profile">
+          <h2 class="testy-monial-name">John Doe</h2>
+          <h6>From Paris</h6>
+          <br>
+                   
+          <p class="testy-monial-story">The best thing of (name) is that we don't have to pay anything its free.</p>
+        </div>
+
+        <div class="testimonial glide_slide">
+          <img src="https://www.kindpng.com/picc/m/155-1550391_faces-in-circle-png-transparent-png.png" alt="babysitter profile picture" class="profile">
+          <h2 class="testy-monial-name">John Doe</h2>
+          <h6>From Assam</h6>
+          <br>
+        
+          
+          <p class="testy-monial-story">Wow, I can enjoy a museum ride from the comfort of my home its so good.</p>
+        </div>
+
+        <div class="testimonial glide_slide">
+          <img src="https://www.pngitem.com/pimgs/m/128-1284293_marina-circle-girl-picture-in-circle-png-transparent.png" alt="babysitter profile picture" class="profile">
+          <h2 class="testy-monial-name">John Doe</h2>
+          <h6>From California</h6>
+          <br>
+          
+          
+          <p class="testy-monial-story">They are the best they give a tour of museum from the comfort of homes and even for free.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ====== -->
+  <footer id="footer">
+    <h2 class="footer-title container">Our Contact</h2>
+    <div class="top-footer container">
+      <div>
+        
+       
+        <div class="phone footer-element">
+          <i class="bx bx-phone"></i>
+          <p class="phone-text">+91 0123456789</p>
+        </div>
+        <div class="email footer-element">
+          <i class="bx bx-envelope"></i>
+          <p class="email-text">example@gmail.com</p>
+        </div>
+      </div>
+      <div class="mapouter">
+        <div class="gmap_canvas">
+          <iframe id="gmap_canvas" src="https://nypost.com/wp-content/uploads/sites/2/2013/08/mona-300x300.jpg?quality=80&strip=all" width="300" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+          
+          
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+</body>
+</html>
+
+
+<style>
+  /*  ===== EXTERNAL LINKS ======  */
+
+/* Montserrat font family */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap");
 
 /*  ===== VARIABLE ======  */
 :root {
@@ -289,7 +369,7 @@ header {
 .services-container {
   margin: 2rem 0;
   display: grid;
-  /* place-items: end; */
+  
   row-gap: 3rem;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
@@ -334,7 +414,129 @@ header {
   position: absolute;
   bottom: 0;
 }
+/* section 4 */
+.section_4 {
+  background-color: var(--light-indigo-clr);
+  
+  background-size: 35rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.testy_title {
+  color: var(--primary-clr);
+  font-size: 1.25rem;
+  letter-spacing: 0.05rem;
+  max-width: 15rem;
+  position: relative;
+  padding: 0.9rem 0;
+}
+.testy_title::before {
+  
+  height: 0.2rem;
+  width: 7rem;
+  background-color: var(--orange-color);
+  position: absolute;
+  bottom: 0;
+}
+.testimonial {
+  margin: 3rem 0;
+  max-width: 20rem;
+  padding: 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  background: linear-gradient(
+    -45deg,
+    hsla(0, 0%, 94%, 0.1),
+    hsla(0, 0%, 94%, 0.3)
+  );
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border-radius: 10px;
+  border: thin solid rgb(255, 255, 255);
+}
+.testimonial img {
+  width: 25%;
+  margin-bottom: 1rem;
+}
+.testy-monial-name {
+  color: var(--primary-clr);
+  font-size: 1.7rem;
+  font-weight: 500;
+}
 
+.testy-monial-story {
+  color: var(--primary-clr);
+  font-size: 1.1rem;
+  line-height: 1.6rem;
+  max-width: 20rem;
+  margin: 0.5rem 0 0.2rem 0;
+}
+
+
+/*  ===== FOOTER ======  */
+footer {
+  background-image: url("https://raw.githubusercontent.com/r-e-d-ant/Babysitter-center-landing-page/8e5d8cc959f1cd34712ed196f6ea3676b7ab5929/assets/img/wave.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+}
+.top-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.footer-title {
+  color: var(--white-clr);
+  font-size: 4rem;
+  font-weight: 400;
+  padding-top: 7rem;
+}
+.footer-element {
+  display: flex;
+  align-items: center;
+  margin: 2rem 0;
+}
+.bx-home,
+.bx-phone,
+.bx-envelope {
+  color: var(--white-clr);
+  font-size: 1.1rem;
+  margin-right: 1rem;
+}
+.address-text,
+.phone-text,
+.email-text {
+  color: var(--white-clr);
+  font-size: 1rem;
+  opacity: 0.9;
+}
+.mapouter {
+  position: relative;
+  text-align: right;
+}
+.gmap_canvas {
+  overflow: hidden;
+  background: none !important;
+  border-radius: 50%;
+}
+.end-footer {
+  background-color: rgb(88, 90, 133);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+
+/*  ===== MEDIA QUERIES ======  */
 @media screen and (max-width: 1000px) {
   /*  ===== BASE ======  */
   .container {
@@ -503,10 +705,49 @@ header {
     place-items: end;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
+  /* section 4 */
+  .section_4 {
+    display: block;
+    margin: 3rem 0;
+  }
+  .glide_slides {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  .testimonial {
+    height: 80%;
+    margin-right: 1.5rem;
+  }
+  .testimonial img {
+    width: 25%;
+  }
+  .testy-monial-name {
+    font-size: 1.4rem;
+    font-weight: 400;
+  }
+  .testy-monial-story {
+    font-size: 0.95rem;
+    opacity: 0.8;
+    margin: 0rem 0 0.2rem 0;
+    line-height: 1.5rem;
+  }
+  
+  
+  /* footer */
+  .top-footer {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .phone-text,
+  .email-text {
+    font-size: 0.9rem;
+  }
 }
-  </style>
- 
-  <script>
+
+</style>
+
+<script>
   "use strict";
 
 const navbar = document.querySelector(".nav-bar");
