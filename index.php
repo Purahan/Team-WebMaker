@@ -1,162 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+  </head>
+  <body>
+    <!-- ===== HEADER ====== -->
+    <div class="hero">
+      <header>
+        <!-- logo -->
+        <a class="logo" href="#">Name</a>
+        <!-- navbar -->
+        <nav class="nav-bar">
+          <ul class="nav-items">
+            <li class="nav-item"><a href="#" class="nav-link">HOME</a></li>
+            <li class="nav-item"><a href="#about-us" class="nav-link">ABOUT</a></li>
+            <li class="nav-item"><a href="#services" class="nav-link">SERVICES</a></li>
+            <li class="nav-item"><a href="#testimonials" class="nav-link">TESTIMONIALS</a></li>
+            <li class="nav-item"><a href="#footer" class="nav-link">CONTACT</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">REGISTER</a></li>
+            <li class="nav-item"><a href="login.php" class="nav-link">LOGIN</a></li>
+          </ul>
+        </nav>
+        <div class="menu-icons">
+          <i class="bx bx-menu"></i>
+          <i class="bx bx-x"></i>
+        </div>
+      </header>
+      <!-- ===== BODY ====== -->
+      <!-- home section -->
+      <section id="hero" class="section_1 home container">
+        <div class="slogan">
+          <h1 class="slogan-title">YOUR HAPPINESS IS OUR PRIORITY</h1>
+          <p class="slogan-text">Even in these hard times we give you a tour of museum from your home.</p>
+          <div class="hero-btn"><a href="#" class="home-btn-link">Take A Tour</a></div>
+        </div>
+      </section>
+    </div>
+    <!-- about us section -->
+    <section id="about-us" class="section_2 about-us">
+      <div class="about-container">
+        <div class="about">
+          <h2 class="about-title title">about us</h2>
+          <div class="about-text-container">
+            <div class="feature-1 feature">
+              
+              <p class="feature_desc">We show you the best arts from the world From the comfort of your home. You can choose yourself any time slot. So, we even give you a tour in the museum for free. So, take a tour to enjoy, see, and know more about the beautiful arts in the world. Thank you for reading. </p>
+            </div>
+            
+          </div>
+        </div>
 
-<head>
-<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-</head>
-<body>
-  <!-- ===== HEADER ====== -->
-  <div class="hero">
-    <header>
-      <!-- logo -->
-      <a class="logo" href="#">Name</a>
-      <!-- navbar -->
-      <nav class="nav-bar">
-        <ul class="nav-items">
-          <li class="nav-item"><a href="#" class="nav-link">HOME</a></li>
-          <li class="nav-item"><a href="#about-us" class="nav-link">ABOUT</a></li>
-          <li class="nav-item"><a href="#services" class="nav-link">SERVICES</a></li>
-          <li class="nav-item"><a href="#testimonials" class="nav-link">TESTIMONIALS</a></li>
-          <li class="nav-item"><a href="#footer" class="nav-link">CONTACT</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">REGISTER</a></li>
-          <li class="nav-item"><a href="login.php" class="nav-link">LOGIN</a></li>
-        </ul>
-      </nav>
-      <div class="menu-icons">
-        <i class="bx bx-menu"></i>
-        <i class="bx bx-x"></i>
-      </div>
-    </header>
-    <!-- ===== BODY ====== -->
-    <!-- home section -->
-    <section id="hero" class="section_1 home container">
-      <div class="slogan">
-        <h1 class="slogan-title">YOUR HAPPINESS IS OUR PRIORITY</h1>
-        <p class="slogan-text">Even in these hard times we give you a tour of museum from your home.</p>
-        <div class="hero-btn"><a href="#" class="home-btn-link">Take A Tour</a></div>
+        <!-- about image -->
+        <img src="https://theculturetrip.com/wp-content/uploads/2018/11/2013_npg_room_4_through_to_11.jpg" class="about-img" alt="Art Museum">
       </div>
     </section>
-  </div>
-  <!-- about us section -->
-  <section id="about-us" class="section_2 about-us">
-    <div class="about-container">
-      <div class="about">
-        <h2 class="about-title title">about us</h2>
-        <div class="about-text-container">
-          <div class="feature-1 feature">
+    <!-- services section -->
+    <section id="services" class="section_3 services container">
+      <h2 class="services-title title">Services (Name) give to their customers</h2>
+      <div class="services-container">
+        <div class="service service-1">
+          <span>01</span>
+          <h2 class="service-title">Free Tour.</h2>
+          <p class="service-description">We always give you free tours because we love to see you happy</p>
+        </div>
+        <div class="service service-2">
+          <span>02</span>
+          <h2 class="service-title">We take care of you.</h2>
+          <p class="service-description">If you face any difficulty you can email us and we will surely reply. because you are the best</p>
+        </div>
+        <div class="service service-3">
+          <span>03</span>
+          <h2 class="service-title">Best Arts</h2>
+          <p class="service-description">We show you the best arts from all over the world and from the best museums in the world.</p>
+        </div>
+        <div class="service service-4">
+          <span>04</span>
+          <h2 class="service-title">Available Anytime.</h2>
+          <p class="service-description">We are available 24/7 unlike other museums so you can enjoy our museum anytime.</p>
+        </div>
+      </div>
+    </section>
+    <!-- testimonials section -->
+    <section id="testimonials" class="section_4 testimonials container">
+      <div class="sub__container">
+        <h2 class="testy_title">Views of some of our customers</h2>
+        <div class="glide_slides">
+          <div class="testimonial bb1 glide_slide">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Rubio_Circle.png" alt="babysitter profile picture" class="profile">
+            <h2 class="testy-monial-name">John Doe</h2>
+            <h6>From Punjab</h6>
+            <br>
             
-            <p class="feature_desc">We show you the best arts from the world From the comfort of your home. You can choose yourself any time slot. So, we even give you a tour in the museum for free. So, take a tour to enjoy, see, and know more about the beautiful arts in the world. Thank you for reading. </p>
+
+            
+            <p class="testy-monial-story">Their museum is so good, best art paintings I enjoyed a lot.</p>
           </div>
+
+          <div class="testimonial glide_slide">
+            <img src="https://www.pngitem.com/pimgs/m/75-758282_walter-circle-person-photo-in-circle-hd-png.png?raw=true" alt="babysitter profile picture" class="profile">
+            <h2 class="testy-monial-name">John Doe</h2>
+            <h6>From Paris</h6>
+            <br>
+                    
+            <p class="testy-monial-story">The best thing of (name) is that we don't have to pay anything its free.</p>
+          </div>
+
+          <div class="testimonial glide_slide">
+            <img src="https://www.kindpng.com/picc/m/155-1550391_faces-in-circle-png-transparent-png.png" alt="babysitter profile picture" class="profile">
+            <h2 class="testy-monial-name">John Doe</h2>
+            <h6>From Assam</h6>
+            <br>
           
+            
+            <p class="testy-monial-story">Wow, I can enjoy a museum ride from the comfort of my home its so good.</p>
+          </div>
+
+          <div class="testimonial glide_slide">
+            <img src="https://www.pngitem.com/pimgs/m/128-1284293_marina-circle-girl-picture-in-circle-png-transparent.png" alt="babysitter profile picture" class="profile">
+            <h2 class="testy-monial-name">John Doe</h2>
+            <h6>From California</h6>
+            <br>
+            
+            
+            <p class="testy-monial-story">They are the best they give a tour of museum from the comfort of homes and even for free.</p>
+          </div>
         </div>
       </div>
+    </section>
 
-      <!-- about image -->
-      <img src="https://theculturetrip.com/wp-content/uploads/2018/11/2013_npg_room_4_through_to_11.jpg" class="about-img" alt="Art Museum">
-    </div>
-  </section>
-  <!-- services section -->
-  <section id="services" class="section_3 services container">
-    <h2 class="services-title title">Services (Name) give to their customers</h2>
-    <div class="services-container">
-      <div class="service service-1">
-        <span>01</span>
-        <h2 class="service-title">Free Tour.</h2>
-        <p class="service-description">We always give you free tours because we love to see you happy</p>
-      </div>
-      <div class="service service-2">
-        <span>02</span>
-        <h2 class="service-title">We take care of you.</h2>
-        <p class="service-description">If you face any difficulty you can email us and we will surely reply. because you are the best</p>
-      </div>
-      <div class="service service-3">
-        <span>03</span>
-        <h2 class="service-title">Best Arts</h2>
-        <p class="service-description">We show you the best arts from all over the world and from the best museums in the world.</p>
-      </div>
-      <div class="service service-4">
-        <span>04</span>
-        <h2 class="service-title">Available Anytime.</h2>
-        <p class="service-description">We are available 24/7 unlike other museums so you can enjoy our museum anytime.</p>
-      </div>
-    </div>
-  </section>
-  <!-- testimonials section -->
-  <section id="testimonials" class="section_4 testimonials container">
-    <div class="sub__container">
-      <h2 class="testy_title">Views of some of our customers</h2>
-      <div class="glide_slides">
-        <div class="testimonial bb1 glide_slide">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Rubio_Circle.png" alt="babysitter profile picture" class="profile">
-          <h2 class="testy-monial-name">John Doe</h2>
-          <h6>From Punjab</h6>
-          <br>
+    <!-- ===== FOOTER ====== -->
+    <footer id="footer">
+      <h2 class="footer-title container">Our Contact</h2>
+      <div class="top-footer container">
+        <div>
           
-
-          
-          <p class="testy-monial-story">Their museum is so good, best art paintings I enjoyed a lot.</p>
-        </div>
-
-        <div class="testimonial glide_slide">
-          <img src="https://www.pngitem.com/pimgs/m/75-758282_walter-circle-person-photo-in-circle-hd-png.png?raw=true" alt="babysitter profile picture" class="profile">
-          <h2 class="testy-monial-name">John Doe</h2>
-          <h6>From Paris</h6>
-          <br>
-                   
-          <p class="testy-monial-story">The best thing of (name) is that we don't have to pay anything its free.</p>
-        </div>
-
-        <div class="testimonial glide_slide">
-          <img src="https://www.kindpng.com/picc/m/155-1550391_faces-in-circle-png-transparent-png.png" alt="babysitter profile picture" class="profile">
-          <h2 class="testy-monial-name">John Doe</h2>
-          <h6>From Assam</h6>
-          <br>
         
-          
-          <p class="testy-monial-story">Wow, I can enjoy a museum ride from the comfort of my home its so good.</p>
+          <div class="phone footer-element">
+            <i class="bx bx-phone"></i>
+            <p class="phone-text">+91 0123456789</p>
+          </div>
+          <div class="email footer-element">
+            <i class="bx bx-envelope"></i>
+            <p class="email-text">example@gmail.com</p>
+          </div>
         </div>
-
-        <div class="testimonial glide_slide">
-          <img src="https://www.pngitem.com/pimgs/m/128-1284293_marina-circle-girl-picture-in-circle-png-transparent.png" alt="babysitter profile picture" class="profile">
-          <h2 class="testy-monial-name">John Doe</h2>
-          <h6>From California</h6>
-          <br>
-          
-          
-          <p class="testy-monial-story">They are the best they give a tour of museum from the comfort of homes and even for free.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== FOOTER ====== -->
-  <footer id="footer">
-    <h2 class="footer-title container">Our Contact</h2>
-    <div class="top-footer container">
-      <div>
-        
-       
-        <div class="phone footer-element">
-          <i class="bx bx-phone"></i>
-          <p class="phone-text">+91 0123456789</p>
-        </div>
-        <div class="email footer-element">
-          <i class="bx bx-envelope"></i>
-          <p class="email-text">example@gmail.com</p>
+        <div class="mapouter">
+          <div class="gmap_canvas">
+            <iframe id="gmap_canvas" src="https://nypost.com/wp-content/uploads/sites/2/2013/08/mona-300x300.jpg?quality=80&strip=all" width="300" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+            
+            
+          </div>
         </div>
       </div>
-      <div class="mapouter">
-        <div class="gmap_canvas">
-          <iframe id="gmap_canvas" src="https://nypost.com/wp-content/uploads/sites/2/2013/08/mona-300x300.jpg?quality=80&strip=all" width="300" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-          
-          
-        </div>
-      </div>
-    </div>
-    
-  </footer>
-</body>
-</html>
+      
+    </footer>
+  </body>
+  </html>
 
 
 <style>
