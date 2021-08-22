@@ -19,7 +19,7 @@
           <li class="nav-item"><a href="#testimonials" class="nav-link">TESTIMONIALS</a></li>
           <li class="nav-item"><a href="#footer" class="nav-link">CONTACT</a></li>
           <li class="nav-item"><a href="#" class="nav-link">REGISTER</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">LOGIN</a></li>
+          <li class="nav-item"><a href="login.php" class="nav-link">LOGIN</a></li>
         </ul>
       </nav>
       <div class="menu-icons">
