@@ -548,6 +548,9 @@ footer {
   }
   .menu-icons {
     display: block;
+    position: fixed;
+    background-color: black; 
+    right: 0;
   }
   .nav-bar {
     background-color: var(--orange-color);
@@ -561,6 +564,7 @@ footer {
     transform-origin: right;
     transition: transform 300ms;
     z-index: 1;
+    position:fixed;
   }
   .show-menu {
     transform: scalex(1);
