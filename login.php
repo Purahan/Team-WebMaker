@@ -7,6 +7,7 @@
         <title>name-Login</title>
         <link rel="stylesheet" href="style.css" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
+        <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     
     </head>
     <body style="background-color: rgb(237, 245, 251); font-family: century gothic, Helvetica, sans-serif;">
@@ -19,12 +20,12 @@
                 <!--navbar-->
                 <nav class="nav-bar">
                 <ul class="nav items">
-                <li class="nav-item"><a href="index.html" class="nav-link" aria-current="page">Home</a></li>
-                <li class="nav-item"><a href="index.html" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="index.html" class="nav-link">services</a></li>
-                <li class="nav-item"><a href="index.html" class="nav-link">Testimonial</a></li>
-                <li class="nav-item"><a href="index.html" class="nav-link active">Login</a></li>
-                <li class="nav-item"><a href="register.html" class="nav-link">Register</a></li>
+                <li class="nav-item"><a href="index.php" class="nav-link" aria-current="page">HOME</a></li>
+                <li class="nav-item"><a href="index.php" class="nav-link">ABOUT</a></li>
+                <li class="nav-item"><a href="index.php" class="nav-link">SERVICES</a></li>
+                <li class="nav-item"><a href="index.php" class="nav-link">TESTIMONAILS</a></li>
+                <li class="nav-item"><a href="register.php" class="nav-link">REGISTER</a></li>
+                <li class="nav-item"><a href="login.php" class="nav-link active">LOGIN</a></li>
                 </ul>
             </header>
         </div>
@@ -36,44 +37,46 @@
                 <hr>
                 <div class="row my-3">                    
                     <div class="col">
-                        <label for="Gmail" class="form-label">Username</label>
-                        <input type="Gmail" class="form-control" id="gmail" placeholder="Gmail" name="email" aria-describedby="email" required />
+                        <label for="email" class="form-label">Username</label>
+                        <input type="email" class="form-control" id="email" placeholder="E-mail" name="email" aria-describedby="email" required />
                     </div>
                 </div>
                 <div class="row pb-3" class="pb-1">
                     <div class="col">
                         <label for="pwd"
-                        >password</label>
+                        >Password</label>
                     </div>
                 </div>
                 <div class="row pb-3" class="pb-1">
                     <div class="col">
-                  <!--password-->
-                  <input type="password" 
-                   class="form-control" placeholder="Password" name="pwd" id="pwd" required />
-                  <!-- An element to toggle between password visibility -->
-<input type="checkbox" onclick="myFunction()"     
-<li>Show Password</li>
+                        <!--password-->
+                        <input type="password" class="form-control" placeholder="Password" name="pwd" id="pwd" required />
+                        <!-- An element to toggle between password visibility -->
+                        <div class="form-check mt-3">
+                        <input class="form-check-input" type="checkbox" onclick="show_pwd()" id="flexCheckDefault" wtx-context="BEFF5258-246B-4F27-8248-7034DE54E482">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Show Password
+                            </label>
+                        </div>
 
-<script>
-function myFunction() {
-  var x = document.getElementById("pwd");
-  if (x.type === "password") {
-    x.type = "pwd";
-  } else {
-    x.type = "password";
-  }
-}
-</script>
+                        <script>
+                            function show_pwd() {
+                            var x = document.getElementById("pwd");
+                            if (x.type === "password") {
+                                x.type = "pwd";
+                            } else {
+                                x.type = "password";
+                            }
+                            }
+                        </script>
+                    </div>
                 </div>
                 <hr>
                 <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
 
                 <input type="submit" class="btn btn-success w-100 px-2 py-2 fs-5" value="Login" />
-                <p>No name account <a href="register.html">register for free</a>.</p>
+                <p>No name account <a href="register.php">register for free</a>.</p>
               </div>
         </form>
     </body>
 </html>
-
-
