@@ -79,7 +79,7 @@ function myFunction() {
                 <p>No name account <a href="register.html">register for free</a>.</p>
               </div>
         </form>
-        <script src = script.js </script>
+        
     </body>
     <style>
  
