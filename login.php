@@ -1,3 +1,44 @@
+<?php
+	//Start Session
+	session_start();
+?>
+<?php
+  $error='';
+  if(!empty($_POST)) {
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "muetour";
+
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    // Check connection
+    if ($conn->connect_error) {
+      //die("Connection failed: " . $conn->connect_error);
+      $error='Error connecting to website. Please try again.';
+    } else {
+      $sql = "SELECT id, first_name, last_name, email, gender FROM `users` WHERE email='".$_POST['email']."' AND pwd=MD5('".$_POST['pwd']."')";
+      $result = $conn->query($sql);
+
+      if ($result->num_rows > 0) {
+      // output data of each row
+        while($row = $result->fetch_assoc()) {
+          echo "Name:".$row["first_name"]."<br> Email: ".$row["email"]."<br>";
+          //$_SESSION['id'] = $row["Username"];
+                  $_SESSION['id'] = $row['id'];
+          $_SESSION['fname'] = $row["first_name"];
+                  $_SESSION['lname'] = $row["last_name"];
+          $_SESSION['email'] = $row["email"];
+          $_SESSION['gender'] = $row["gender"];
+          header("Location: welcome.php");
+        }
+      } else {
+        $error='Username or Password is incorrect.';
+      }
+    }
+    $conn->close();
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -34,10 +75,18 @@
                 <h1 class="fs-1">Login</h1>
                 <p>Please fill in this form to Login in to your account.</p>
                 <hr>
+                
+                <!--If any error it will be printed here-->
+                <?php if(!empty($error)) { ?>						
+                    <div class="error alert alert-danger">
+                        <?php echo $error;?>
+                    </div>
+				        <?php } ?>
+
                 <div class="row my-3">                    
                     <div class="col">
                         <label for="Gmail" class="form-label">Username</label>
-                        <input type="Gmail" class="form-control" id="gmail" placeholder="Gmail" name="email" aria-describedby="email" required />
+                        <input type="Gmail" class="form-control" id="email" placeholder="Email" name="email" aria-describedby="email" required />
                     </div>
                 </div>
                 <div class="row pb-3" class="pb-1">
@@ -76,7 +125,7 @@ function myFunction() {
 
              
 
-                <p>No name account <a href="register.html">register for free</a>.</p>
+                <p>No name account <a href="register.php">register for free</a>.</p>
               </div>
         </form>
         
