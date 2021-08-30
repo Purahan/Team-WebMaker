@@ -13,7 +13,7 @@
   <nav class="navbar">
     <div class="container">
       <section class="wrapper">
-        <h1 class="brand"><a href="./index.html" class="brand-link">Muetour</a></h1>
+        <h1 class="brand"><a href="index.php" class="brand-link">Muetour</a></h1>
         <button type="button" class="burger" id="burger">
           <span class="burger-line"></span>
           <span class="burger-line"></span>
@@ -22,11 +22,11 @@
         </button>
         <div class="menu" id="menu">
           <ul class="menu-inner">
-            <li class="menu-item"><a href="index.html" class="menu-link">Home</a></li>
-            <li class="menu-item"><a href="#" class="menu-link">Something</a></li>
-            <li class="menu-item"><a href="#" class="menu-link">Something</a></li>
-            <li class="menu-item"><a href="#" class="menu-link">Something</a></li>
-            <li class="menu-item"><a href="#" class="menu-link">Something</a></li>
+            <li class="menu-item"><a href="index.php" class="menu-link">Home</a></li>
+            <li class="menu-item"><a href="#" class="menu-link">Profile</a></li>
+            <li class="menu-item"><a href="#" class="menu-link">Booked Visits</a></li>
+            <li class="menu-item"><a href="#" class="menu-link">Book Visit</a></li>
+            <li class="menu-item menu-link">Something</li>
           </ul>
         </div>
       </section>

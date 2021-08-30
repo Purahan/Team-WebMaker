@@ -43,33 +43,49 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Name-register</title>
+    <title>Muetour-Register</title>
     <link rel="stylesheet" href="style.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+      body {
+          font-family: 'Poppins', sans-serif !important;
+      }
+      html,body {
+        background-image: linear-gradient(to bottom right, rgba(105,155,200,1) , rgba(181,197,216,1), rgba(105,155,200,1));
+        background-repeat: no-repeat;
+      }
+      .brand-name {
+        color: hsl(255, 100%, 60%);;
+      }
+      .brand-name:hover {
+        color: #007bff;
+      }
+    </style>
   </head>
 
   <body style="background-color: rgb(187, 203, 161); font-family: century gothic, Helvetica, sans-serif;">
-    <div id="header">
-      <header class="d-flex flex-wrap justify-content-center px-3 py-3 mb-4 border-bottom bg-light">
-        <a href="index.php" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-          <svg class="bi me-2" width="40" height="32">
-            <use xlink:href="#bootstrap"></use>
-          </svg>
-          <span class="fs-4">Name</span>
-        </a>
-
-        <ul class="nav nav pills">
-            <li class="nav-item"><a href="index.html" class="nav-link" aria-current="page">Home</a></li>
-            <li class="nav-item"><a href="index.html" class="nav-link">About</a></li>
-            <li class="nav-item"><a href="index.html" class="nav-link">services</a></li>
-            <li class="nav-item"><a href="index.html" class="nav-link">Testimonial</a></li>
-            <li class="nav-item"><a href="index.html" class="nav-link">Login</a></li>
-        </ul>
-      </header>
-    </div>
+        <div id="header">
+            <header class="d-flex flex-wrap justify-content-center pe-3 py-3 mb-4 border-bottom bg-light">
+                <a href="index.php" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+                <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+                <h3 class="text-uppercase fw-bold brand-name mt-2">Muetour</h3>
+                </a>
+                <!--navbar-->
+                <nav class="nav-bar nav-pills">
+                <ul class="nav items">
+                <li class="nav-item"><a href="index.php" class="nav-link link-dark" aria-current="page">Home</a></li>
+                <li class="nav-item"><a href="index.php" class="nav-link link-dark">About</a></li>
+                <li class="nav-item"><a href="index.php" class="nav-link link-dark">services</a></li>
+                <li class="nav-item"><a href="index.php" class="nav-link link-dark">Testimonial</a></li>
+                <li class="nav-item"><a href="register.php" class="nav-link link-dark active">Register</a></li>
+                <li class="nav-item"><a href="login.php" class="nav-link link-dark">Login</a></li>
+                </ul>
+            </header>
+        </div>
     <form action="register.php" method="post" onsubmit="return pwd_check();">
-        <div class="container bg-light my-5 py-4 px-5">
+        <div class="container bg-light my-5 py-4 px-5 rounded">
             <h1 class="fs-1">Register</h1>
             <p>Please fill in this form to create an account.</p>
             <hr>
