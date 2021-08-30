@@ -18,7 +18,7 @@
       $error='  Error connecting to website. Please try again.';
     } else {
 
-      $sql = "INSERT INTO `users` (first_name, last_name, email, pwd, phone, gender, dob, created_on, updated_on) VALUES ('".$_POST['fname']."', '".$_POST['lname']."', '".$_POST['email']."', '".md5($_POST['pwd'])."', '".$_POST['phone']."', '".$_POST['gender']."', '".$_POST['dob']."', '".date("Y-m-d")."', '".date("Y-m-d")."')";
+      $sql = "INSERT INTO `users` (first_name, last_name, email, pwd, phone, gender, dob, created_on, modified_on) VALUES ('".$_POST['fname']."', '".$_POST['lname']."', '".$_POST['email']."', '".md5($_POST['pwd'])."', '".$_POST['phone']."', '".$_POST['gender']."', '".$_POST['dob']."', '".date("Y-m-d")."', '".date("Y-m-d")."')";
 
       if ($conn->query($sql) === FALSE) {
         //die("Error: " . $sql . "<br>" . $conn->error);
