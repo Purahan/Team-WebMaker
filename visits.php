@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-  
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,14 +37,13 @@
     
     
   </header>
-<div class="container my-5">
-    <div class="row">
+    <div class="container my-5">
+      <div class="row">
         <div class="col-md-12 text-center">
-            
-            <h2 class="text-capitalize font-weight-bold">Booked Visits</h2>
+          <h2 class="text-capitalize font-weight-bold">Booked Visits</h2>
         </div>
-    </div>
-    <div class="row mt-sm-5">
+      </div>
+      <div class="row mt-sm-5">
         <div class="col-md-6">
             <div class="bg-light px-4 py-5 my-lg-5 my-md-2 my-sm-2">
                 <div class="d-flex justify-content-between align-items-center mx-auto">
@@ -55,7 +53,7 @@
                       <hr>
                     </div>
                     <p class="text-center">
-                  
+                        
                     </p>
                 </div>
                 <div class="my-2">
@@ -106,17 +104,8 @@ body {
 }
 html,
 body {
-  
-    
-background: rgb(105,155,200) ; 
-background: -moz-radial-gradient(top left, ellipse cover, rgba(105,155,200,1) 0%, rgba(181,197,216,1) 57%);
- background: -webkit-gradient(radial, top left, 0px, top left, 100%, color-stop(0%,rgba(105,155,200,1)), color-stop(57%,rgba(181,197,216,1))) ;
- background: -webkit-radial-gradient(top left, ellipse cover, rgba(105,155,200,1) 0%,rgba(181,197,216,1) 57%) ;
- background: -o-radial-gradient(top left, ellipse cover, rgba(105,155,200,1) 0%,rgba(181,197,216,1) 57%) ;
- background: -ms-radial-gradient(top left, ellipse cover, rgba(105,155,200,1) 0%,rgba(181,197,216,1) 57%) ;
- background: radial-gradient(ellipse at top left, rgba(105,155,200,1) 0%,rgba(181,197,216,1) 57%) ;
- filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#699bc8', endColorstr='#b5c5d8',GradientType=1 ) ;
-
+  background-image: linear-gradient(to bottom right, rgba(105,155,200,1) , rgba(181,197,216,1), rgba(105,155,200,1));
+  background-repeat: no-repeat;
 
 }
 a:hover {
