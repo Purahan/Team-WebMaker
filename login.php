@@ -23,11 +23,11 @@
       if ($result->num_rows > 0) {
       // output data of each row
         while($row = $result->fetch_assoc()) {
-          echo "Meutour:".$row["first_Meutour"]."<br> Email: ".$row["email"]."<br>";
-          //$_SESSION['id'] = $row["UserMeutour"];
+          echo "Meutour:".$row["first_nam"]."<br> Email: ".$row["email"]."<br>";
+          //$_SESSION['id'] = $row["Username"];
                   $_SESSION['id'] = $row['id'];
-          $_SESSION['fMeutour'] = $row["first_Meutour"];
-                  $_SESSION['lMeutour'] = $row["last_Meutour"];
+          $_SESSION['fname'] = $row["first_name"];
+                  $_SESSION['lname'] = $row["last_name"];
           $_SESSION['email'] = $row["email"];
           $_SESSION['gender'] = $row["gender"];
           header("Location: welcome.php");
