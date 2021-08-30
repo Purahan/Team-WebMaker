@@ -1,6 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/525fd5b530.js"crossorigin="anonymous"></script>
 </head>
 
 <header>
@@ -57,7 +63,10 @@
                     <div class="d-flex align-items-center">
                         <span class="d-inline-block rounded-circle" style="width: 15px;height: 15px;background-color: Red"> </span>
                         <small class="ml-1 text-secondary">Pending</small>
+                        
                     </div>
+                    <button class="custom-btn btn-1" style="margin-top: 25px;">Visit</button>
+                    <button class="custom-btn btn-2" style="margin-top: 25px; margin-left: 200px"><i class="fa fa-trash"></i>       Delete</button>
 
                 </div>
             </div>
@@ -79,6 +88,8 @@
                         <span class="d-inline-block rounded-circle" style="width: 15px;height: 15px;background-color: red"> </span>
                         <small class="ml-1 text-secondary">Pending</small>
                     </div>
+                    <button class="custom-btn btn-1" style="margin-top: 25px;">Visit</button>
+                    <button class="custom-btn btn-2" style="margin-top: 25px; margin-left: 200px"><i class="fa fa-trash"></i>       Delete</button>
 
                 </div>
             </div>
@@ -86,6 +97,7 @@
 
     </div>
 </div>
+</html>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
@@ -96,14 +108,15 @@ html,
 body {
   
     
-background: rgb(105,155,200);
+background: rgb(105,155,200) ; 
 background: -moz-radial-gradient(top left, ellipse cover, rgba(105,155,200,1) 0%, rgba(181,197,216,1) 57%);
- background: -webkit-gradient(radial, top left, 0px, top left, 100%, color-stop(0%,rgba(105,155,200,1)), color-stop(57%,rgba(181,197,216,1)));
- background: -webkit-radial-gradient(top left, ellipse cover, rgba(105,155,200,1) 0%,rgba(181,197,216,1) 57%);
- background: -o-radial-gradient(top left, ellipse cover, rgba(105,155,200,1) 0%,rgba(181,197,216,1) 57%);
- background: -ms-radial-gradient(top left, ellipse cover, rgba(105,155,200,1) 0%,rgba(181,197,216,1) 57%);
- background: radial-gradient(ellipse at top left, rgba(105,155,200,1) 0%,rgba(181,197,216,1) 57%);
- filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#699bc8', endColorstr='#b5c5d8',GradientType=1 );
+ background: -webkit-gradient(radial, top left, 0px, top left, 100%, color-stop(0%,rgba(105,155,200,1)), color-stop(57%,rgba(181,197,216,1))) ;
+ background: -webkit-radial-gradient(top left, ellipse cover, rgba(105,155,200,1) 0%,rgba(181,197,216,1) 57%) ;
+ background: -o-radial-gradient(top left, ellipse cover, rgba(105,155,200,1) 0%,rgba(181,197,216,1) 57%) ;
+ background: -ms-radial-gradient(top left, ellipse cover, rgba(105,155,200,1) 0%,rgba(181,197,216,1) 57%) ;
+ background: radial-gradient(ellipse at top left, rgba(105,155,200,1) 0%,rgba(181,197,216,1) 57%) ;
+ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#699bc8', endColorstr='#b5c5d8',GradientType=1 ) ;
+
 
 }
 a:hover {
@@ -258,6 +271,110 @@ video {
   transform: rotate(0deg);
   transition: 0.25s ease-in-out;
 }
+
+/*button*/
+
+.custom-btn {
+  width: 130px;
+  height: 40px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
+
+
+
+
+
+
+.btn-1 {
+  background: #b621fe;
+  border: none;
+  z-index: 1;
+}
+.btn-1:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  background-color: #663dff;
+  border-radius: 5px;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  transition: all 0.3s ease;
+}
+.btn-1:hover {
+  color: #fff;
+}
+.btn-1:hover:after {
+  left: 0;
+  width: 100%;
+}
+.btn-1:active {
+  top: 2px;
+}
+
+/*button 2*/
+
+
+
+
+
+
+
+
+
+.btn-2 {
+  background: #db4f4f;
+  border: none;
+  z-index: 1;
+}
+.btn-2:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  background-color: #ff0000;
+  border-radius: 5px;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  transition: all 0.3s ease;
+}
+.btn-2:hover {
+  color: #fff;
+}
+.btn-2:hover:after {
+  left: 0;
+  width: 100%;
+}
+.btn-2:active {
+  top: 2px;
+}
+
+/*button end*/
+
+
+
+
 .navbar .burger-line:nth-child(1) {
   top: 0;
 }
