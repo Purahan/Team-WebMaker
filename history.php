@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+  
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/525fd5b530.js"crossorigin="anonymous"></script>
 </head>
 
 <header>
@@ -11,7 +14,8 @@
   <nav class="navbar">
     <div class="container">
       <section class="wrapper">
-        <h1 class="brand"><a href="./index.html" class="brand-link">Muetour</a></h1>
+        <h1 class="brand"><a href="index.html" class="brand-link">Muetour</a></h1>
+     
         <button type="button" class="burger" id="burger">
           <span class="burger-line"></span>
           <span class="burger-line"></span>
@@ -39,18 +43,22 @@
     <div class="row">
         <div class="col-md-12 text-center">
             
-            <h2 class="text-capitalize font-weight-bold">Visits History</h2>
+            <h2 class="text-capitalize font-weight-bold">Booked Visits</h2>
         </div>
     </div>
     <div class="row mt-sm-5">
         <div class="col-md-6">
             <div class="bg-light px-4 py-5 my-lg-5 my-md-2 my-sm-2">
+              
                 <div class="d-flex justify-content-between align-items-center mx-auto">
+                  
                     <div>
-                        <h2 class="font-weight-bold" style="margin-top: -30px;">8:20</h2>
+                 
+                        <h2 class="font-weight-bold" style="margin-top: -30px;" >8:20</h2>
                       <small class="d-block text-center" style="line-height: 0;color: #9b5de5">AM</small>
                       <hr>
                     </div>
+                    <h3 style="text-align: right; padding-bottom: 13%;">UK ART Museum</h3>
                     <p class="text-center">
                   
                     </p>
@@ -58,9 +66,12 @@
                 <div class="my-2">
                     <p class="text-secondary" style="line-height: 2;">25 August 2021.</p>
                     <div class="d-flex align-items-center">
-                        <span class="d-inline-block rounded-circle" style="width: 15px;height: 15px;background-color: rgb(0, 245, 0)"> </span>
-                        <small class="ml-1 text-secondary">Completed</small>
+                        <span class="d-inline-block rounded-circle" style="width: 15px;height: 15px;background-color: Red"> </span>
+                        <small class="ml-1 text-secondary">Pending</small>
+                        
                     </div>
+                    <button class="custom-btn btn-1" style="margin-top: 25px;">Visit</button>
+                    <button class="custom-btn btn-2" style="margin-top: 25px; margin-left: 200px"><i class="fa fa-trash"></i>       Delete</button>
 
                 </div>
             </div>
@@ -72,16 +83,20 @@
                         <h2 class="font-weight-bold" style="margin-top: -30px;">9:20</h2>
                       <small class="d-block text-center" style="line-height: 0;color: #9b5de5">AM</small>
                       <hr>
+                     
                     </div>
+                    <h3 style="text-align: right; padding-bottom: 13%;">UK ART Museum</h3>
                  
                     </p>
                 </div>
                 <div class="my-2">
                     <p class="text-secondary" style="line-height: 2;">25 AUGUST 2021</p>
                     <div class="d-flex align-items-center">
-                        <span class="d-inline-block rounded-circle" style="width: 15px;height: 15px;background-color: rgb(0, 245, 0)"> </span>
-                        <small class="ml-1 text-secondary">Completed</small>
+                        <span class="d-inline-block rounded-circle" style="width: 15px;height: 15px;background-color: red"> </span>
+                        <small class="ml-1 text-secondary">Pending</small>
                     </div>
+                    <button class="custom-btn btn-1" style="margin-top: 25px;">Visit</button>
+                    <button class="custom-btn btn-2" style="margin-top: 25px; margin-left: 200px"><i class="fa fa-trash"></i>       Delete</button>
 
                 </div>
             </div>
@@ -100,14 +115,15 @@ html,
 body {
   
     
-background: rgb(105,155,200);
+background: rgb(105,155,200) ; 
 background: -moz-radial-gradient(top left, ellipse cover, rgba(105,155,200,1) 0%, rgba(181,197,216,1) 57%);
- background: -webkit-gradient(radial, top left, 0px, top left, 100%, color-stop(0%,rgba(105,155,200,1)), color-stop(57%,rgba(181,197,216,1)));
- background: -webkit-radial-gradient(top left, ellipse cover, rgba(105,155,200,1) 0%,rgba(181,197,216,1) 57%);
- background: -o-radial-gradient(top left, ellipse cover, rgba(105,155,200,1) 0%,rgba(181,197,216,1) 57%);
- background: -ms-radial-gradient(top left, ellipse cover, rgba(105,155,200,1) 0%,rgba(181,197,216,1) 57%);
- background: radial-gradient(ellipse at top left, rgba(105,155,200,1) 0%,rgba(181,197,216,1) 57%);
- filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#699bc8', endColorstr='#b5c5d8',GradientType=1 );
+ background: -webkit-gradient(radial, top left, 0px, top left, 100%, color-stop(0%,rgba(105,155,200,1)), color-stop(57%,rgba(181,197,216,1))) ;
+ background: -webkit-radial-gradient(top left, ellipse cover, rgba(105,155,200,1) 0%,rgba(181,197,216,1) 57%) ;
+ background: -o-radial-gradient(top left, ellipse cover, rgba(105,155,200,1) 0%,rgba(181,197,216,1) 57%) ;
+ background: -ms-radial-gradient(top left, ellipse cover, rgba(105,155,200,1) 0%,rgba(181,197,216,1) 57%) ;
+ background: radial-gradient(ellipse at top left, rgba(105,155,200,1) 0%,rgba(181,197,216,1) 57%) ;
+ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#699bc8', endColorstr='#b5c5d8',GradientType=1 ) ;
+
 
 }
 a:hover {
@@ -262,6 +278,110 @@ video {
   transform: rotate(0deg);
   transition: 0.25s ease-in-out;
 }
+
+/*button*/
+
+.custom-btn {
+  width: 130px;
+  height: 40px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
+
+
+
+
+
+
+.btn-1 {
+  background: #b621fe;
+  border: none;
+  z-index: 1;
+}
+.btn-1:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  background-color: #663dff;
+  border-radius: 5px;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  transition: all 0.3s ease;
+}
+.btn-1:hover {
+  color: #fff;
+}
+.btn-1:hover:after {
+  left: 0;
+  width: 100%;
+}
+.btn-1:active {
+  top: 2px;
+}
+
+/*button 2*/
+
+
+
+
+
+
+
+
+
+.btn-2 {
+  background: #db4f4f;
+  border: none;
+  z-index: 1;
+}
+.btn-2:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  background-color: #ff0000;
+  border-radius: 5px;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  transition: all 0.3s ease;
+}
+.btn-2:hover {
+  color: #fff;
+}
+.btn-2:hover:after {
+  left: 0;
+  width: 100%;
+}
+.btn-2:active {
+  top: 2px;
+}
+
+/*button end*/
+
+
+
+
 .navbar .burger-line:nth-child(1) {
   top: 0;
 }
@@ -332,6 +452,10 @@ video {
     align-items: flex-start;
     gap: 0.75rem;
     padding: 1rem 0;
+  }
+  .btn-2 {
+    margin-left: -200px;
+    justify-content: left;
   }
 }
 </style>
