@@ -71,7 +71,7 @@
                         
                     </div>
                     <button class="custom-btn btn-1" style="margin-top: 25px;">Visit</button>
-                    <button class="custom-btn btn-2" style="margin-top: 25px; margin-left: 200px"><i class="fa fa-trash"></i>       Delete</button>
+              
 
                 </div>
             </div>
@@ -95,8 +95,8 @@
                         <span class="d-inline-block rounded-circle" style="width: 15px;height: 15px;background-color: red"> </span>
                         <small class="ml-1 text-secondary">Pending</small>
                     </div>
-                    <button class="custom-btn btn-1" style="margin-top: 25px;">Visit</button>
-                    <button class="custom-btn btn-2" style="margin-top: 25px; margin-left: 200px"><i class="fa fa-trash"></i>       Delete</button>
+                    <button class="custom-btn btn-1" style="margin-top: 25px;">Rebook</button>
+                  
 
                 </div>
             </div>
