@@ -70,7 +70,7 @@
                         <small class="ml-1 text-secondary">Pending</small>
                         
                     </div>
-                    <button class="custom-btn btn-1" style="margin-top: 25px;">Visit</button>
+                    <button class="custom-btn btn-1" style="margin-top: 25px;">Rebook</button>
               
 
                 </div>
