@@ -3,6 +3,11 @@
 	session_start();
 ?>
 <?php
+  if(!isset($_SESSION['id'])){
+    header("Location: index.php");
+  }
+?>
+<?php
   $error='';
   $servername = "localhost";
   $username = "root";
@@ -21,7 +26,6 @@
       
   }
   $conn->close();
-  echo $error;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,8 +36,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/525fd5b530.js"crossorigin="anonymous"></script>
+    <title>Book a Visit</title>
 </head>
 <body>
+  <div class="body"></div>
 <header>
       
   <nav class="navbar sticky">
@@ -48,11 +54,12 @@
         </button>
         <div class="menu" id="menu">
           <ul class="menu-inner">
-            <li class="menu-item"><a href="index.php" class="menu-link">Home</a></li>
-            <li class="menu-item"><a href="#" class="menu-link">Profile</a></li>
-            <li class="menu-item"><a href="#" class="menu-link">Booked Visits</a></li>
+          <li class="menu-item"><a href="index.php" class="menu-link">Home</a></li>
+            <li class="menu-item"><a href="profile.php" class="menu-link">Profile</a></li>
+            <li class="menu-item"><a href="visits.php" class="menu-link">Booked Visits</a></li>
+            <li class="menu-item"><a href="history.php" class="menu-link">Visit History</a></li>
             <li class="menu-item"><a href="book.php" class="menu-link active-link text-light">Book Visit</a></li>
-            <li class="menu-item menu-link">Something</li>
+            <li class="menu-item pro"><i class="fas fa-user-circle"></i> <?=$_SESSION['fname']." ".$_SESSION['lname'];?></li>
           </ul>
         </div>
       </section>
@@ -83,7 +90,7 @@
                                 <div class="card-body">
                                     <h3 class="card-title">'.$row["name"].'</h3>
                                     <p class="card-text" style="text-align: justify;">'.$row["description"].'</p>
-                                    <a href=""><button class="mt-4 btn btn-success">Book a Visit</button></a>
+                                    <a href="book-form.php?book='.$row['id'].'"><button class="mt-4 btn btn-success">Book a Visit</button></a>
                                     <a href="'.$row["ref_link"].'"><button class="mx-2 mt-4 btn btn-info">Get more info <i class="bi bi-info-circle"></i></button></a>
                                 </div>
                             </div>
@@ -109,11 +116,15 @@
   body {
       font-family: 'Poppins', sans-serif !important;
   }
-  html,
-  body {
+  .body {
     background-image: linear-gradient(to bottom right, rgba(105,155,200,1) , rgba(181,197,216,1), rgba(105,155,200,1));
     background-repeat: no-repeat;
-
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
   }
   a:hover {
       text-decoration: none;
@@ -147,6 +158,18 @@
       0 2px 4px -1px rgba(0, 0, 0, 0.06);
     --shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
       0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+
+  .pro {
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: inherit;
+    border: none;
+    color: var(--color-black);
+    text-transform: uppercase;
+    text-rendering: optimizeLegibility;
+    transition: all 0.35s ease-in-out;
   }
 
   html {
@@ -268,27 +291,6 @@
     transition: 0.25s ease-in-out;
   }
 
-  /*button*/
-
-  .custom-btn {
-    width: 130px;
-    height: 40px;
-    color: #fff;
-    border-radius: 5px;
-    padding: 10px 25px;
-    font-family: 'Lato', sans-serif;
-    font-weight: 500;
-    background: transparent;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    display: inline-block;
-    box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
-    7px 7px 20px 0px rgba(0,0,0,.1),
-    4px 4px 5px 0px rgba(0,0,0,.1);
-    outline: none;
-  }
-/* Buttons End */
   .navbar .burger-line:nth-child(1) {
     top: 0;
   }

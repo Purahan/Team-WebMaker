@@ -3,6 +3,11 @@
 	session_start();
 ?>
 <?php
+  if(isset($_SESSION['id'])){
+    header("Location: book.php");
+  }
+?>
+<?php
   $error='';
   if(!empty($_POST)) {
     $servername = "localhost";
@@ -52,8 +57,9 @@
     </head>
     </head>
     <body style="background-color: rgb(237, 245, 251); font-family: century gothic, Helvetica, sans-serif;">
+        <div class="body"></div>
         <nav class="navbar">
-        <div class="container">
+        <div class="header-container">
           <section class="wrapper">
             <h1 class="brand"><a href="index.php" class="brand-link">Muetour</a></h1>
             <button type="button" class="burger" id="burger">
@@ -70,7 +76,7 @@
                 <li class="menu-item"><a href="index.php#testimonials" class="menu-link">Testimonial</a></li>
                 <li class="menu-item"><a href="index.php#footer" class="menu-link">Contact</a></li>
                 <li class="menu-item"><a href="register.php" class="menu-link">Register</a></li>
-                <li class="menu-item"><a href="login.php" class="menu-link">Login</a></li>
+                <li class="menu-item"><a href="login.php" class="menu-link active-link text-light">Login</a></li>
               
               </ul>
             </div>
@@ -139,13 +145,16 @@
   body {
       font-family: 'Poppins', sans-serif !important;
   }
-  html,body {
+  .body {
     background-image: linear-gradient(to bottom right, rgba(105,155,200,1) , rgba(181,197,216,1), rgba(105,155,200,1));
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     width: 100%;
     height: 100vh;
+    position: fixed;
+    top: 0;
+    z-index: -1;
   }
   .brand-name {
     color: hsl(255, 100%, 60%);;
@@ -172,7 +181,13 @@
     box-sizing: border-box;
     scroll-behavior: smooth;
   }
-
+  .active-link {
+    color: #fff;
+    background-color: #0d6efd;
+    border-radius: .25rem;
+    padding: .5rem 1rem;
+    display: block;
+  }
   *,
   *::before,
   *::after {
@@ -216,7 +231,7 @@
       object-fit: cover;
   }
 
-  .container {
+  .header-container {
     max-width: 83rem;
     width: 100%;
     height: auto;

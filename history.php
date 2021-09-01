@@ -1,3 +1,32 @@
+<?php
+  // Session Start
+  session_start();
+?>
+<?php
+  if(!isset($_SESSION['id'])){
+    header("Location: index.php");
+  }
+?>
+<?php
+  $error='';
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "muetour";
+  // Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
+
+  $sql = "SELECT * FROM `booked_visit` WHERE user_id='".$_SESSION['id']."' AND status='c'";
+  $history = $conn->query($sql);
+  // Check connection
+  if ($conn->connect_error) {
+    //die("Connection failed: " . $conn->connect_error);
+    $error='Error connecting to website. Please try again.';
+  } else {
+      
+  }
+  $conn->close();
+?>
 <!DOCTYPE html>
 <html lang="en">
   
@@ -8,9 +37,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/525fd5b530.js"crossorigin="anonymous"></script>
 </head>
-
+<div class="body"></div>
 <header>
-      
+  
   <nav class="navbar">
     <div class="container">
       <section class="wrapper">
@@ -24,11 +53,12 @@
         </button>
         <div class="menu" id="menu">
           <ul class="menu-inner">
-            <li class="menu-item"><a href="index.html" class="menu-link">Home</a></li>
-            <li class="menu-item"><a href="#" class="menu-link">Something</a></li>
-            <li class="menu-item"><a href="#" class="menu-link">Something</a></li>
-            <li class="menu-item"><a href="#" class="menu-link">Something</a></li>
-            <li class="menu-item"><a href="#" class="menu-link">Something</a></li>
+            <li class="menu-item"><a href="index.php" class="menu-link">Home</a></li>
+            <li class="menu-item"><a href="profile.php" class="menu-link">Profile</a></li>
+            <li class="menu-item"><a href="visits.php" class="menu-link">Booked Visits</a></li>
+            <li class="menu-item"><a href="history.php" class="menu-link active-link text-light">Visit History</a></li>
+            <li class="menu-item"><a href="book.php" class="menu-link">Book Visit</a></li>
+            <li class="menu-item pro"><i class="fas fa-user-circle"></i> <?=$_SESSION['fname']." ".$_SESSION['lname'];?></li>
           </ul>
         </div>
       </section>
@@ -43,65 +73,44 @@
     <div class="row">
         <div class="col-md-12 text-center">
             
-            <h2 class="text-capitalize font-weight-bold">Booked Visits</h2>
+            <h2 class="text-capitalize font-weight-bold">Your Visit History</h2>
         </div>
     </div>
     <div class="row mt-sm-5">
-        <div class="col-md-6">
-            <div class="bg-light px-4 py-5 my-lg-5 my-md-2 my-sm-2">
-              
-                <div class="d-flex justify-content-between align-items-center mx-auto">
-                  
-                    <div>
-                 
-                        <h2 class="font-weight-bold" style="margin-top: -30px;" >8:20</h2>
-                      <small class="d-block text-center" style="line-height: 0;color: #9b5de5">AM</small>
-                      <hr>
-                    </div>
-                    <h3 style="text-align: right; padding-bottom: 13%;">UK ART Museum</h3>
-                    <p class="text-center">
-                  
-                    </p>
-                </div>
-                <div class="my-2">
-                    <p class="text-secondary" style="line-height: 2;">25 August 2021.</p>
-                    <div class="d-flex align-items-center">
-                        <span class="d-inline-block rounded-circle" style="width: 15px;height: 15px;background-color: Red"> </span>
-                        <small class="ml-1 text-secondary">Pending</small>
+      <?php
+        if ($history->num_rows > 0) {
+          while($row = $history->fetch_assoc()) {
+            echo '<div class="col-md-6">
+                    <div class="bg-light px-4 py-5 my-lg-5 my-md-2 my-sm-2">
+                        <div class="d-flex justify-content-between align-items-center mx-auto">
+                            <div>
+                                <h2 class="font-weight-bold" style="margin-top: -30px;">9:20</h2>
+                              <small class="d-block text-center" style="line-height: 0;color: #9b5de5">AM</small>
+                              <hr>
+                            
+                            </div>
+                            <h3 style="text-align: right; padding-bottom: 13%;">'.$row["name"].'</h3>
                         
-                    </div>
-                    <button class="custom-btn btn-1" style="margin-top: 25px;">Rebook</button>
-              
+                            </p>
+                        </div>
+                        <div class="my-2">
+                            <p class="text-secondary" style="line-height: 2;">'.$row['date'].'</p>
+                            <div class="d-flex align-items-center">
+                                <span class="d-inline-block rounded-circle" style="width: 15px;height: 15px;background-color: rgb(21, 255, 80)"> </span>
+                                <small class="ml-1 text-secondary">Complete</small>
+                            </div>
+                            <button class="custom-btn btn-1" style="margin-top: 25px;">Rebook</button>
+                          
 
-                </div>
-            </div>
-        </div>
-      <div class="col-md-6">
-            <div class="bg-light px-4 py-5 my-lg-5 my-md-2 my-sm-2">
-                <div class="d-flex justify-content-between align-items-center mx-auto">
-                    <div>
-                        <h2 class="font-weight-bold" style="margin-top: -30px;">9:20</h2>
-                      <small class="d-block text-center" style="line-height: 0;color: #9b5de5">AM</small>
-                      <hr>
-                     
+                        </div>
                     </div>
-                    <h3 style="text-align: right; padding-bottom: 13%;">UK ART Museum</h3>
-                 
-                    </p>
-                </div>
-                <div class="my-2">
-                    <p class="text-secondary" style="line-height: 2;">25 AUGUST 2021</p>
-                    <div class="d-flex align-items-center">
-                        <span class="d-inline-block rounded-circle" style="width: 15px;height: 15px;background-color: red"> </span>
-                        <small class="ml-1 text-secondary">Pending</small>
-                    </div>
-                    <button class="custom-btn btn-1" style="margin-top: 25px;">Rebook</button>
-                  
-
-                </div>
-            </div>
-        </div>
-
+                </div>';
+          }
+        }
+        else {
+          echo "You don't have a museum visiting history!";
+        }
+      ?>
     </div>
 </div>
 </html>
@@ -111,20 +120,16 @@
 body {
     font-family: 'Poppins', sans-serif !important;
 }
-html,
-body {
-  
-    
-background: rgb(105,155,200) ; 
-background: -moz-radial-gradient(top left, ellipse cover, rgba(105,155,200,1) 0%, rgba(181,197,216,1) 57%);
- background: -webkit-gradient(radial, top left, 0px, top left, 100%, color-stop(0%,rgba(105,155,200,1)), color-stop(57%,rgba(181,197,216,1))) ;
- background: -webkit-radial-gradient(top left, ellipse cover, rgba(105,155,200,1) 0%,rgba(181,197,216,1) 57%) ;
- background: -o-radial-gradient(top left, ellipse cover, rgba(105,155,200,1) 0%,rgba(181,197,216,1) 57%) ;
- background: -ms-radial-gradient(top left, ellipse cover, rgba(105,155,200,1) 0%,rgba(181,197,216,1) 57%) ;
- background: radial-gradient(ellipse at top left, rgba(105,155,200,1) 0%,rgba(181,197,216,1) 57%) ;
- filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#699bc8', endColorstr='#b5c5d8',GradientType=1 ) ;
-
-
+.body {
+  background-image: linear-gradient(to bottom right, rgba(105,155,200,1) , rgba(181,197,216,1), rgba(105,155,200,1));
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  z-index: -1;
 }
 a:hover {
     text-decoration: none;
@@ -143,7 +148,26 @@ a:hover {
   --light-green-clr: hsl(171, 40%, 86%);
 }
 
+.active-link {
+    color: #fff;
+    background-color: #0d6efd;
+    border-radius: .25rem;
+    padding: .5rem 1rem;
+    display: block;
+}
 
+
+.pro {
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: inherit;
+    border: none;
+    color: var(--color-black);
+    text-transform: uppercase;
+    text-rendering: optimizeLegibility;
+    transition: all 0.35s ease-in-out;
+}
 
 /*  ===== HEADER ======  */
 :root {
@@ -408,7 +432,6 @@ video {
   justify-content: center;
   align-items: center;
   gap: 2rem;
-	margin-top: 10px;
 }
 .navbar .menu-link {
   font-family: inherit;
