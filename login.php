@@ -25,15 +25,16 @@
         while($row = $result->fetch_assoc()) {
           echo "Meutour:".$row["first_name"]."<br> Email: ".$row["email"]."<br>";
           //$_SESSION['id'] = $row["Username"];
-                  $_SESSION['id'] = $row['id'];
+          $_SESSION['id'] = $row['id'];
           $_SESSION['fname'] = $row["first_name"];
-                  $_SESSION['lname'] = $row["last_name"];
+          $_SESSION['lname'] = $row["last_name"];
           $_SESSION['email'] = $row["email"];
           $_SESSION['gender'] = $row["gender"];
           header("Location: book.php");
         }
       } else {
         $error='UserMeutour or Password is incorrect.';
+        return;
       }
     }
     $conn->close();
@@ -46,8 +47,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta Meutour="viewport" content="width=device-width, initial-scale=1.0">
         <title>Muetour-Login</title>
-        <link rel="stylesheet" href="style.css" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     </head>
     </head>
     <body style="background-color: rgb(237, 245, 251); font-family: century gothic, Helvetica, sans-serif;">
@@ -81,6 +82,7 @@
                 <!--If any error it will be printed here-->
                 <?php if(!empty($error)) { ?>						
                     <div class="error alert alert-danger">
+                      <i class="bi bi-exclamation-triangle"></i>
                         <?php echo $error;?>
                     </div>
 				        <?php } ?>
@@ -109,8 +111,10 @@
                 var x = document.getElementById("pwd");
                 if (x.type === "password") {
                   x.type = "pwd";
+                  console.log("Showing pwd.")
                 } else {
                   x.type = "password";
+                  console.log("Hiding pwd.")
                 }
               }
             </script>
@@ -132,6 +136,10 @@
   html,body {
     background-image: linear-gradient(to bottom right, rgba(105,155,200,1) , rgba(181,197,216,1), rgba(105,155,200,1));
     background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100vh;
   }
   .brand-name {
     color: hsl(255, 100%, 60%);;

@@ -59,6 +59,10 @@
       html,body {
         background-image: linear-gradient(to bottom right, rgba(105,155,200,1) , rgba(181,197,216,1), rgba(105,155,200,1));
         background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        width: 100%;
+        height: 100vh;
       }
       .brand-name {
         color: hsl(255, 100%, 60%);;
