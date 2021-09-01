@@ -23,7 +23,7 @@
       if ($result->num_rows > 0) {
       // output data of each row
         while($row = $result->fetch_assoc()) {
-          echo "Meutour:".$row["first_name"]."<br> Email: ".$row["email"]."<br>";
+          echo "name:".$row["first_name"]."<br> Email: ".$row["email"]."<br>";
           //$_SESSION['id'] = $row["Username"];
           $_SESSION['id'] = $row['id'];
           $_SESSION['fname'] = $row["first_name"];
@@ -33,7 +33,7 @@
           header("Location: book.php");
         }
       } else {
-        $error='UserMeutour or Password is incorrect.';
+        $error='Username or Password is incorrect.';
         return;
       }
     }
@@ -45,7 +45,7 @@
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta Meutour="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Muetour-Login</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
@@ -90,7 +90,7 @@
                 <div class="row my-3">                    
                     <div class="col">
                         <label for="email" class="form-label">Username</label>
-                        <input type="email" class="form-control" id="email" placeholder="Email" Meutour="email" aria-describedby="email" required />
+                        <input type="email" class="form-control" id="email" placeholder="Email" name="email" aria-describedby="email" required />
                     </div>
                 </div>
                 <div class="row pb-3" class="pb-1">
@@ -101,7 +101,7 @@
                 <div class="row pb-3" class="pb-1">
             <div class="col">
               <!--password-->
-          <input type="password" class="form-control" placeholder="Password" Meutour="pwd" id="pwd" required />
+          <input type="password" class="form-control" placeholder="Password" name="pwd" id="pwd" required />
           <!-- An element to toggle between password visibility -->
           <div class="form-check my-2">
             <input type="checkbox" class="form-check-input" id="showpwd" onclick="Show_pwd()" />
