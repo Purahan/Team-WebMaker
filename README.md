@@ -27,3 +27,7 @@ This is the link for the documentation: https://docs.google.com/document/d/1V_ST
 * Purahan Gupta (Backend Handler, Museum Tour, Front End Handler)
 * Navjot Singh Aulakh (Login, Register Page)
 * Rishabh Tandon (Designs of other Pages)
+
+### Visit our website
+You can visit our website on:
+http://muetour.teamforwork.com/
