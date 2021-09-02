@@ -10,11 +10,26 @@
         header("Location: book.php");
     }
 ?>
-<?php
-    if($_GET['museum']==1) {
-        header("Location: https://artsandculture.google.com/streetview/the-natural-history-museum/JQF3coVswSVUVw?sv_lng=-0.1763095666940444&sv_lat=51.49585077079966&sv_h=349.7214560100194&sv_p=7.317086054834945&sv_pid=JjkDPElblDKT7EbT7wN9dw&sv_z=1.6578940231750074");
+<?php  
+    $error='';
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "muetour";
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    $sql = "UPDATE booked_visit SET status='c' WHERE id=".$_GET['id']." AND museum_id=".$_GET['museum'];
+    $conn->prepare($sql)->execute();
+
+    $sql = "SELECT link FROM `museums` WHERE id=".$_GET['museum'];
+    $museum = $conn->query($sql);
+    
+    if ($museum->num_rows > 0) {
+        while($row = $museum->fetch_assoc()) {
+            header("Location: ".$row['link']);
+        }
     }
-    else {
-        header("Location: https://artsandculture.google.com/streetview/van-gogh-museum-groundfloor/2QHwyv_Y6gueAw?sv_lng=4.881116679300609&sv_lat=52.35827690478066&sv_h=339.39457660908386&sv_p=-2.2390664344936795&sv_pid=XgEzf7Uj1a2wDLc0p6yh3w&sv_z=1.0000000000000002");
-    }
+
+    $conn->close();
 ?>

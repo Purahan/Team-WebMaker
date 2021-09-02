@@ -1,51 +1,30 @@
 <?php
-	//Start Session
-	session_start();
+  // Session Start
+  session_start();
 ?>
 <?php
   if(!isset($_SESSION['id'])){
     header("Location: index.php");
-  }
+}
 ?>
-<?php
-  $error='';
-  $servername = "localhost";
-  $username = "root";
-  $password = "";
-  $dbname = "muetour";
-  // Create connection
-  $conn = new mysqli($servername, $username, $password, $dbname);
 
-  $sql = "SELECT * FROM `museums` WHERE 1";
-  $museums = $conn->query($sql);
-  // Check connection
-  if ($conn->connect_error) {
-    //die("Connection failed: " . $conn->connect_error);
-    $error='Error connecting to website. Please try again.';
-  } else {
-      
-  }
-  $conn->close();
-?>
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/525fd5b530.js"crossorigin="anonymous"></script>
-    <title>Book a Visit</title>
-</head>
-<body>
+    <title>Muetour Profile</title>
+  </head>
+  <body>
   <div class="body"></div>
-<header>
-      
-  <nav class="navbar sticky">
+  <nav class="navbar">
     <div class="container">
       <section class="wrapper">
-        <h1 class="brand"><a href="index.php" class="brand-link">Muetour</a></h1>
+        <h1 class="brand"><a href="index.html" class="brand-link">Muetour</a></h1>
+     
         <button type="button" class="burger" id="burger">
           <span class="burger-line"></span>
           <span class="burger-line"></span>
@@ -55,10 +34,10 @@
         <div class="menu" id="menu">
           <ul class="menu-inner">
           <li class="menu-item"><a href="index.php" class="menu-link">Home</a></li>
-            <li class="menu-item"><a href="profile.php" class="menu-link">Profile</a></li>
+            <li class="menu-item"><a href="profile.php" class="menu-link active-link text-light">Profile</a></li>
             <li class="menu-item"><a href="visits.php" class="menu-link">Booked Visits</a></li>
             <li class="menu-item"><a href="history.php" class="menu-link">Visit History</a></li>
-            <li class="menu-item"><a href="book.php" class="menu-link active-link text-light">Book Visit</a></li>
+            <li class="menu-item"><a href="book.php" class="menu-link">Book Visit</a></li>
             <div class="dropdown">
               <button class="dropbtn menu-link pro"><i class="fas fa-user-circle"></i> <?=$_SESSION['fname']." ".$_SESSION['lname'];?>
                 <i class="fa fa-caret-down"></i>
@@ -73,71 +52,20 @@
       </section>
     </div>
   </nav>
-
-   
-    
-    
-  </header>
-    <div class="container my-5">
-      <div class="row my-3">
-        <div class="mt-5 col-md-12 text-center">
-          <h2 class="text-capitalize font-weight-bold">Book a Visit</h2>
-        </div>
-      </div>
-    
-    <div class="row">
-      <?php
-        if ($museums->num_rows > 0) {
-          while($row = $museums->fetch_assoc()) {
-            echo '<div class="card mb-3 border-0">
-                    <div class="row g-0">
-                        <div class="col-md-6">
-                            <img src="'.$row["pic_1"].'" class="img-fluid rounded-start" alt="">
-                        </div>
-                            <div class="col-md-6">
-                                <div class="card-body">
-                                    <h3 class="card-title">'.$row["name"].'</h3>
-                                    <p class="card-text" style="text-align: justify;">'.$row["description"].'</p>
-                                    <a href="book-form.php?book='.$row['id'].'"><button class="mt-4 btn btn-success">Book a Visit</button></a>
-                                    <a href="'.$row["ref_link"].'"><button class="mx-2 mt-4 btn btn-info">Get more info <i class="bi bi-info-circle"></i></button></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div> 
-                  </div>';
-          }
-        }
-      ?>
-
-    </div>
-  </body>
-</html>
-<style>
-.sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 4;
-}
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
-  body {
-      font-family: 'Poppins', sans-serif !important;
+  <style>
+       :root {
+    --color-white: hsl(0, 0%, 100%);
+    --color-light: hsl(206, 33%, 96%);
+    --color-black: hsl(0, 0%, 7%);
+    --color-night: hsl(214, 100%, 10%);
+    --color-purple: hsl(291, 64%, 42%);
+    --color-indigo: hsl(255, 100%, 60%);
+    --shadow-small: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05);
   }
-  .body {
-    background-image: linear-gradient(to bottom right, rgba(105,155,200,1) , rgba(181,197,216,1), rgba(105,155,200,1));
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    width: 100%;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-  }
-  a:hover {
-      text-decoration: none;
-  }
-  @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap");
 
   /* Nav Drop-Down CSS */
 .dropdown .dropbtn {
@@ -178,45 +106,13 @@
 }
 /* Drop-Down CSS Ends Here */
 
-  /*  ===== VARIABLE ======  */
-  :root {
-    --primary-clr: hsl(237, 20%, 43%);
-    --second-clr: hsl(257, 21%, 50%);
-    --primary-clr-alt: rgb(150, 139, 179);
-    --white-clr: hsl(260, 60%, 99%);
-    --light-indigo-clr: hsl(277, 82%, 96%);
-    --pink-clr: hsl(306, 26%, 84%);
-    --orange-color: hsl(12, 100%, 72%);
-    --light-green-clr: hsl(171, 40%, 86%);
-  }
 
-
-
-  /*  ===== HEADER ======  */
-  :root {
-    --color-white: hsl(0, 0%, 100%);
-    --color-light: hsl(206, 33%, 96%);
-    --color-black: hsl(0, 0%, 7%);
-    --color-night: hsl(214, 100%, 10%);
-    --color-purple: hsl(291, 64%, 42%);
-    --color-indigo: hsl(255, 100%, 60%);
-    --shadow-small: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-    --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-      0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-      0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  }
-
-  .pro {
-    font-family: inherit;
-    font-size: 1rem;
-    font-weight: 600;
-    line-height: inherit;
-    border: none;
-    color: var(--color-black);
-    text-transform: uppercase;
-    text-rendering: optimizeLegibility;
-    transition: all 0.35s ease-in-out;
+  .active-link {
+    color: #fff;
+    background-color: #0d6efd;
+    border-radius: .25rem;
+    padding: .5rem 1rem;
+    display: block;
   }
 
   html {
@@ -337,7 +233,6 @@
     transform: rotate(0deg);
     transition: 0.25s ease-in-out;
   }
-
   .navbar .burger-line:nth-child(1) {
     top: 0;
   }
@@ -364,6 +259,7 @@
     justify-content: center;
     align-items: center;
     gap: 2rem;
+  margin-top: 10px;
   }
   .navbar .menu-link {
     font-family: inherit;
@@ -410,17 +306,13 @@
       padding: 1rem 0;
     }
   }
-  .active-link {
-    color: #fff;
-    background-color: #0d6efd;
-    border-radius: .25rem;
-    padding: .5rem 1rem;
-    display: block;
-  }
+
   </style>
+
   <script>
-    // Initialize All Required DOM Element
-  const burgerMenu = document.getElementById("burger");
+       //navbar
+	  
+	    const burgerMenu = document.getElementById("burger");
   const navbarMenu = document.getElementById("menu");
 
   // Initialize Responsive Navbar Menu
@@ -434,5 +326,211 @@
       navbarMenu.removeAttribute("style");
     }
   });
-
   </script>
+  <?php
+    if($_SESSION['gender'] == 'f') {
+      $gender = 'Female';
+    }
+    if($_SESSION['gender'] == 'm') {
+      $gender = 'Male';
+    }
+  ?>
+
+
+<div class="mainn">
+<?php if(isset($_GET['password-change']) && $_GET['password-change']=='success') { ?>
+<div class="alert alert-success mx-auto" style="width:300px;" role="alert">
+  Password changed successfully!
+</div>
+<?php } ?>
+  <div class="cardd">
+
+    <div class="img">
+      <img src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png">
+
+    </div>
+    <div class="infoss">
+      <div class="namee" style="margin-left: 30px;">
+       <h2><strong> <?=$_SESSION['fname'].' '.$_SESSION['lname']?></strong></h2>
+      
+      </div>
+      <p class="textt">
+        <b>Email:</b> <?=$_SESSION['email']?>
+        <br>
+        <br>
+        <b>Password:</b> <span class="text-danger">We are not authorized to show you the password over here!</span>
+        <br>
+        <br>
+        <b>Gender:</b> <?=$gender?>
+        <br>
+        <br>
+        <b>DOB:</b> <?php
+                      $date=date_create($_SESSION['dob']);
+                      echo date_format($date,"d F Y");
+                    ?>
+        <br>
+        <br>
+        <b>Phone:</b> <?=$_SESSION['phone']?>
+        <br>
+        <br>
+      </p>
+    
+      <div class="linkss">
+        <a href="profile-edit.php"><button class="edit" style="width: max-content; margin-left: 30px; margin-top: -2%"><i class="fas fa-edit"></i> Edit Profile</button></a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+  <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  
+}
+
+.body {
+  font-family: 'Poppins', sans-serif;
+  background-image: linear-gradient(to bottom right, rgba(105,155,200,1) , rgba(181,197,216,1), rgba(105,155,200,1));
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top:0;
+}
+.mainn {
+    display: block;
+    margin: auto;
+    width: 100%;
+    margin-top: 5%;
+   
+}
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Utilities */
+.cardd::after,
+.cardd img {
+  border-radius: 50%;
+}
+
+.cardd,
+.stats {
+  display: flex;
+}
+
+.cardd {
+  padding: 2.5rem 2rem;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, .5);
+  max-width: 100%;
+  box-shadow: 0 0 30px rgba(0, 0, 0, .15);
+  margin: 1rem;
+  position: relative;
+  transform-style: preserve-3d;
+  overflow: hidden;
+}
+.cardd::before,
+.cardd::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+}
+.cardd::before {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #FFF;
+  border-radius: 10px;
+  top: -.7rem;
+  left: -.7rem;
+}
+.cardd::after {
+  height: 15rem;
+  width: 15rem;
+  background-color: #4172f5aa;
+  top: -8rem;
+  right: -8rem;
+  box-shadow: 2rem 6rem 0 -3rem #FFF
+}
+
+.cardd img {
+  width: 8rem;
+  min-width: 80px;
+  box-shadow: 0 0 0 5px #FFF;
+}
+
+.infoss {
+  margin-left: 1.5rem;
+}
+
+.namee {
+  margin-bottom: 1rem;
+}
+.namee h2 {
+  font-size: 1.3rem;
+}
+.namee h4 {
+  font-size: .8rem;
+  color: #333
+}
+
+.textt {
+  font-size: .9rem;
+  margin-bottom: 1rem;
+  margin-left: 30px;
+}
+
+.stats {
+  margin-bottom: 1rem;
+}
+.stats li {
+  min-width: 5rem;
+}
+.stats li h3 {
+  font-size: .99rem;
+}
+
+
+.linkss button {
+  font-family: 'Poppins', sans-serif;
+  min-width: 120px;
+  padding: .5rem;
+  border: 1px solid #222;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all .25s linear;
+}
+.linkss .edit,
+.linkss .view:hover {
+  background-color: #222;
+  color: #FFF;
+}
+.linkss .view,
+.linkss .edit:hover{
+  background-color: transparent;
+  color: #222;
+}
+
+@media screen and (max-width: 450px) {
+  .cardd {
+    display: block;
+  }
+  .infoss {
+    margin-left: 0;
+    margin-top: 1.5rem;
+  }
+
+}
+
+  
+
+  </style>
+  </body>
+</html>

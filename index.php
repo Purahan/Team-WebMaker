@@ -47,11 +47,21 @@
           <nav class="nav-bar">
             <ul class="nav-items">
               <li class="nav-item"><a href="#" class="nav-link">HOME</a></li>
-              <li class="nav-item"><a href="#services" class="nav-link">PROFILE</a></li>
+              <li class="nav-item"><a href="profile.php" class="nav-link">PROFILE</a></li>
               <li class="nav-item"><a href="visits.php" class="nav-link">BOOKED VISITS</a></li>
               <li class="nav-item"><a href="history.php" class="nav-link">VISIT HISTORY</a></li>
               <li class="nav-item"><a href="book.php" class="nav-link">BOOK VISIT</a></li>
-              <li class="nav-item pro" style="text-transform: uppercase;"><i class="fas fa-user-circle"></i> '.$_SESSION["fname"].' '.$_SESSION["lname"].'</li>
+              <li class="nav-item">
+                <div class="dropdown">
+                  <button class="dropbtn menu-link pro" style="text-transform: uppercase;"> <i class="fas fa-user-circle"></i> '.$_SESSION['fname'].' '.$_SESSION['lname'].'
+                    <i class="fa fa-caret-down"></i>
+                  </button>
+                  <div class="dropdown-content">
+                    <a href="profile.php">Profile <i class="fas fa-id-card"></i></a>
+                    <a href="log-out.php" style="color: #fff; background-color: #dc3545 !important;">Log-out <i class="fas fa-sign-out-alt"></i></a>
+                  </div>
+                </div>
+              </li>
             </ul>
           </nav>
           <div class="menu-icons">
@@ -122,7 +132,7 @@
         <div class="glide_slides">
           <div class="testimonial bb1 glide_slide">
             <img src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Rubio_Circle.png" alt="babysitter profile picture" class="profile">
-            <h2 class="testy-monial-name">John Doe</h2>
+            <h2 class="testy-monial-name">Jatinder</h2>
             <h6>From Punjab</h6>
             <br>
             
@@ -133,7 +143,7 @@
 
           <div class="testimonial glide_slide">
             <img src="https://www.pngitem.com/pimgs/m/75-758282_walter-circle-person-photo-in-circle-hd-png.png?raw=true" alt="babysitter profile picture" class="profile">
-            <h2 class="testy-monial-name">John Doe</h2>
+            <h2 class="testy-monial-name">Johnny</h2>
             <h6>From Paris</h6>
             <br>
                     
@@ -142,8 +152,8 @@
 
           <div class="testimonial glide_slide">
             <img src="https://www.kindpng.com/picc/m/155-1550391_faces-in-circle-png-transparent-png.png" alt="babysitter profile picture" class="profile">
-            <h2 class="testy-monial-name">John Doe</h2>
-            <h6>From Assam</h6>
+            <h2 class="testy-monial-name">Anjali</h2>
+            <h6>From Chandigarh</h6>
             <br>
           
             
@@ -152,7 +162,7 @@
 
           <div class="testimonial glide_slide">
             <img src="https://www.pngitem.com/pimgs/m/128-1284293_marina-circle-girl-picture-in-circle-png-transparent.png" alt="babysitter profile picture" class="profile">
-            <h2 class="testy-monial-name">John Doe</h2>
+            <h2 class="testy-monial-name">Olivia</h2>
             <h6>From California</h6>
             <br>
             
@@ -198,6 +208,44 @@
 
 /* Montserrat font family */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap");
+
+/* Nav Drop-Down CSS */
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  text-transform: uppercase;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+/* Drop-Down CSS Ends Here */
 
 /*  ===== VARIABLE ======  */
 :root {
@@ -736,11 +784,11 @@ footer {
     border-radius: 10px;
     border: thin solid rgb(239, 239, 239, 0.6);
     padding: 2rem 1.5rem;
-    position: absolute;
-    top: 50%;
     transform: translateY(-50%);
-    left: 20rem;
     z-index: 1;
+    margin-top: 20%;
+    width: 45%;
+    margin-left: 20px;
   }
   .about-container img {
     display: block;

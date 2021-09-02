@@ -58,7 +58,15 @@
             <li class="menu-item"><a href="visits.php" class="menu-link">Booked Visits</a></li>
             <li class="menu-item"><a href="history.php" class="menu-link active-link text-light">Visit History</a></li>
             <li class="menu-item"><a href="book.php" class="menu-link">Book Visit</a></li>
-            <li class="menu-item pro"><i class="fas fa-user-circle"></i> <?=$_SESSION['fname']." ".$_SESSION['lname'];?></li>
+            <div class="dropdown">
+              <button class="dropbtn menu-link pro"><i class="fas fa-user-circle"></i> <?=$_SESSION['fname']." ".$_SESSION['lname'];?>
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-content">
+                <a href="profile.php">Profile <i class="fas fa-id-card"></i></a>
+                <a href="log-out.php" class="bg-danger text-light">Log-out <i class="fas fa-sign-out-alt"></i></a>
+              </div>
+            </div>
           </ul>
         </div>
       </section>
@@ -99,7 +107,7 @@
                                 <span class="d-inline-block rounded-circle" style="width: 15px;height: 15px;background-color: rgb(21, 255, 80)"> </span>
                                 <small class="ml-1 text-secondary">Complete</small>
                             </div>
-                            <button class="custom-btn btn-1" style="margin-top: 25px;">Rebook</button>
+                            <a href="book-form.php?book='.$row["museum_id"].'"><button class="custom-btn btn-1" style="margin-top: 25px;">Rebook</button></a>
                           
 
                         </div>
@@ -147,6 +155,45 @@ a:hover {
   --orange-color: hsl(12, 100%, 72%);
   --light-green-clr: hsl(171, 40%, 86%);
 }
+
+/* Nav Drop-Down CSS */
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: black;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  text-transform: uppercase;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+/* Drop-Down CSS Ends Here */
 
 .active-link {
     color: #fff;
@@ -432,7 +479,6 @@ video {
   justify-content: center;
   align-items: center;
   gap: 2rem;
-	margin-top: 10px;
 }
 .navbar .menu-link {
   font-family: inherit;

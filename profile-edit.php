@@ -3,8 +3,8 @@
 	session_start();
 ?>
 <?php
-  if(isset($_SESSION['id'])){
-    header("Location: book.php");
+  if(!isset($_SESSION['id'])){
+    header("Location: index.php");
   }
 ?>
 <?php
@@ -22,13 +22,16 @@
       //die("Connection failed: " . $conn->connect_error);
       $error='Error connecting to website. Please try again.';
     } else {
-      $sql = "SELECT id, first_name, last_name, phone, dob, email, gender FROM `users` WHERE email='".$_POST['email']."' AND pwd=MD5('".$_POST['pwd']."')";
+      $sql = "UPDATE users SET first_name='".$_POST['fname']."', last_name='".$_POST['lname']."', phone=".$_POST['phone'].", dob='".$_POST['dob']."', email='".$_POST['email']."', gender='".$_POST['gender']."' WHERE id=".$_SESSION['id'];
+      $result = $conn->query($sql);
+
+      $sql = "SELECT id, first_name, last_name, phone, dob, email, gender FROM `users` WHERE id=".$_SESSION['id'];
       $result = $conn->query($sql);
 
       if ($result->num_rows > 0) {
       // output data of each row
         while($row = $result->fetch_assoc()) {
-          echo "name:".$row["first_name"]."<br> Email: ".$row["email"]."<br>";
+          // echo "name:".$row["first_name"]."<br> Email: ".$row["email"]."<br>";
           //$_SESSION['id'] = $row["Username"];
           $_SESSION['id'] = $row['id'];
           $_SESSION['fname'] = $row["first_name"];
@@ -37,7 +40,7 @@
           $_SESSION['gender'] = $row["gender"];
           $_SESSION['phone'] = $row['phone'];
           $_SESSION['dob'] = $row['dob'];
-          header("Location: book.php");
+          header("Location: profile.php");
         }
       } else {
         $error='Username or Password is incorrect.';
@@ -53,14 +56,14 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Muetour-Login</title>
+        <title>Muetour-Update Profile</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     </head>
-    </head>
-    <body style="background-color: rgb(237, 245, 251); font-family: century gothic, Helvetica, sans-serif;">
-        <div class="body"></div>
-        <nav class="navbar">
+
+    <body style="background-color: rgb(187, 203, 161); font-family: century gothic, Helvetica, sans-serif;">
+     <div class="body"></div>
+     <nav class="navbar">
         <div class="header-container">
           <section class="wrapper">
             <h1 class="brand"><a href="index.php" class="brand-link">Muetour</a></h1>
@@ -77,69 +80,92 @@
                 <li class="menu-item"><a href="index.php#services" class="menu-link">Services</a></li>
                 <li class="menu-item"><a href="index.php#testimonials" class="menu-link">Testimonial</a></li>
                 <li class="menu-item"><a href="index.php#footer" class="menu-link">Contact</a></li>
-                <li class="menu-item"><a href="register.php" class="menu-link">Register</a></li>
-                <li class="menu-item"><a href="login.php" class="menu-link active-link text-light">Login</a></li>
+                <li class="menu-item"><a href="register.php" class="menu-link active-link text-light">Register</a></li>
+                <li class="menu-item"><a href="login.php" class="menu-link">Login</a></li>
               
               </ul>
             </div>
           </section>
         </div>
       </nav>
-        </div>
-        <!--form-->
-        <form action="login.php" method="post">
-            <div class="container bg-light my-5 py-4 px-5 rounded opacity-25">
-                <h1 class="fs-1">Login</h1>
-                <p>Please fill in this form to Login in to your account.</p>
-                <hr>
-                
-                <!--If any error it will be printed here-->
-                <?php if(!empty($error)) { ?>						
-                    <div class="error alert alert-danger">
-                      <i class="bi bi-exclamation-triangle"></i>
-                        <?php echo $error;?>
-                    </div>
-				        <?php } ?>
+    </div>
+    <form action="profile-edit.php" method="post">
+        <div class="container bg-light my-5 py-4 px-5 rounded">
+            <h1 class="fs-1">Update Profile</h1>
+            <p>Please update your details filled in this form.</p>
+            <hr>
+            
+            <!--If any error it will be printed here-->
+            <?php if(!empty($error)) { ?>						
+                <div id="error" class="error alert alert-danger" role="alert">
+                  <i class="bi bi-exclamation-triangle"></i>
+                  <?php echo $error;?>
+                </div>
+            <?php } ?>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="f-name">First Name</label>
+                <input type="text" class="form-control mt-2" id="fname" value="<?=$_SESSION['fname']?>" placeholder="First name" name="fname" aria-label="First name" required />
+              </div>
+                <div class="col-md-6">
+                  <label for="l-name">Last Name</label>
+                  <input type="text" class="form-control mt-2" id="lname" value="<?=$_SESSION['lname']?>" placeholder="Last name" name="lname" aria-label="Last name" required />
+                </div>
+            </div>
+            <div class="row my-3">
+                <div class="col-md-6">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" class="form-control mt-2" id="email" value="<?=$_SESSION['email']?>" placeholder="Email" name="email" aria-describedby="email" required />
+                    <div id="emailHelp" class="form-text"><i class="bi bi-info-circle"></i> Note that, we won't share your Email with anyone.</div>
+                </div>
+                <div class="col-md-6">
+                    <label for="gender">Gender</label>
+                    <select class="form-control my-2" name="gender" id="gender" value="<?=$_SESSION['gender']?>">
+                      <optgroup label="Gender">Gender
+                        <option value="m">Male</option>
+                        <option value="f">Female</option>
+                      </optgroup>
+                    </select>
+                </div>
+            </div>
+            <div class="row pb-3" class="pb-1">
+                <div class="col-md-6">
+                  <label for="dob">Date of Birth</label>
+                  <input type="date" name="dob" id="dob" value="<?=$_SESSION['dob']?>" class="form-control mt-2" max="01-01-2010" required />
+                </div>
+                <div class="col-md-6">
+                    <label for="phone" class="pb-1">Phone Number:</label>
+                    <input type="tel" class="form-control mt-2" value="<?=$_SESSION['phone']?>" placeholder="Phone Number" name="phone" id="phone" required />
+                </div>
+            </div>
+            <hr>
+            <p>To change your current password <a href="pwd-change.php">Click here!</a></p>
+            <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
 
-                <div class="row my-3">                    
-                    <div class="col">
-                        <label for="email" class="form-label">Username</label>
-                        <input type="email" class="form-control" id="email" placeholder="Email" name="email" aria-describedby="email" required />
-                    </div>
-                </div>
-                <div class="row pb-3" class="pb-1">
-                    <div class="col">
-                        <label for="pwd">Password</label>
-                    </div>
-                </div>
-                <div class="row pb-3" class="pb-1">
-            <div class="col">
-              <!--password-->
-          <input type="password" class="form-control" placeholder="Password" name="pwd" id="pwd" required />
-          <!-- An element to toggle between password visibility -->
-          <div class="form-check my-2">
-            <input type="checkbox" class="form-check-input" id="showpwd" onclick="Show_pwd()" />
-            <label for="showpwd" class="form-check-label">Show Password</label>
-            <script>
-              function Show_pwd() {
-                var x = document.getElementById("pwd");
-                if (x.type === "password") {
-                  x.type = "pwd";
-                  console.log("Showing pwd.")
-                } else {
-                  x.type = "password";
-                  console.log("Hiding pwd.")
-                }
-              }
-            </script>
-          </div>
+            <button type="submit" class="btn btn-success w-100 px-2 py-2 fs-5">Update User deatils</button>
         </div>
-        <hr>
-        <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
-        <input type="submit" class="btn btn-success w-100 px-2 py-2 fs-5" value="Login" />
-        <p>Don't have an account <a href="register.php">register for free</a>.</p>
-      </div>
     </form>
+  </body>
+  <script>
+      //navbar
+	  
+	    const burgerMenu = document.getElementById("burger");
+  const navbarMenu = document.getElementById("menu");
+
+  // Initialize Responsive Navbar Menu
+  burgerMenu.addEventListener("click", () => {
+    burgerMenu.classList.toggle("active");
+    navbarMenu.classList.toggle("active");
+
+    if (navbarMenu.classList.contains("active")) {
+      navbarMenu.style.maxHeight = navbarMenu.scrollHeight + "px";
+    } else {
+      navbarMenu.removeAttribute("style");
+    }
+  });
+	  
+
+  </script>
   </body>
 </html>
 <style>
@@ -378,22 +404,3 @@
 
  
 </style>
-
-<script>
-	      //navbar
-	  
-	    const burgerMenu = document.getElementById("burger");
-  const navbarMenu = document.getElementById("menu");
-
-  // Initialize Responsive Navbar Menu
-  burgerMenu.addEventListener("click", () => {
-    burgerMenu.classList.toggle("active");
-    navbarMenu.classList.toggle("active");
-
-    if (navbarMenu.classList.contains("active")) {
-      navbarMenu.style.maxHeight = navbarMenu.scrollHeight + "px";
-    } else {
-      navbarMenu.removeAttribute("style");
-    }
-  });
-</script>

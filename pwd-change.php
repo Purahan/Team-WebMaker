@@ -3,8 +3,8 @@
 	session_start();
 ?>
 <?php
-  if(isset($_SESSION['id'])){
-    header("Location: book.php");
+  if(!isset($_SESSION['id'])){
+    header("Location: index.php");
   }
 ?>
 <?php
@@ -22,27 +22,19 @@
       //die("Connection failed: " . $conn->connect_error);
       $error='Error connecting to website. Please try again.';
     } else {
-      $sql = "SELECT id, first_name, last_name, phone, dob, email, gender FROM `users` WHERE email='".$_POST['email']."' AND pwd=MD5('".$_POST['pwd']."')";
-      $result = $conn->query($sql);
-
-      if ($result->num_rows > 0) {
-      // output data of each row
-        while($row = $result->fetch_assoc()) {
-          echo "name:".$row["first_name"]."<br> Email: ".$row["email"]."<br>";
-          //$_SESSION['id'] = $row["Username"];
-          $_SESSION['id'] = $row['id'];
-          $_SESSION['fname'] = $row["first_name"];
-          $_SESSION['lname'] = $row["last_name"];
-          $_SESSION['email'] = $row["email"];
-          $_SESSION['gender'] = $row["gender"];
-          $_SESSION['phone'] = $row['phone'];
-          $_SESSION['dob'] = $row['dob'];
-          header("Location: book.php");
+        $sql = "SELECT id FROM `users` WHERE id=".$_SESSION['id']." and pwd=MD5('".$_POST['o-pwd']."')";
+        $result = $conn->query($sql);
+        if($result->num_rows > 0) {
+            $sql = "UPDATE users SET pwd=MD5('".$_POST['n-pwd']."') WHERE id=".$_SESSION['id']." and pwd=MD5('".$_POST['o-pwd']."')";
+            $result = $conn->query($sql);
+            if ($result) {
+                header("Location: profile.php?password-change=success");
+            } else {
+                $error='  Error in updating password. Please try again.';
+            }
+        } else {
+            $error='  Your Entered Password is incorrect.';
         }
-      } else {
-        $error='Username or Password is incorrect.';
-        return;
-      }
     }
     $conn->close();
   }
@@ -53,14 +45,14 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Muetour-Login</title>
+        <title>Muetour-Change Password</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     </head>
-    </head>
-    <body style="background-color: rgb(237, 245, 251); font-family: century gothic, Helvetica, sans-serif;">
-        <div class="body"></div>
-        <nav class="navbar">
+
+    <body style="background-color: rgb(187, 203, 161); font-family: century gothic, Helvetica, sans-serif;">
+     <div class="body"></div>
+     <nav class="navbar">
         <div class="header-container">
           <section class="wrapper">
             <h1 class="brand"><a href="index.php" class="brand-link">Muetour</a></h1>
@@ -77,69 +69,71 @@
                 <li class="menu-item"><a href="index.php#services" class="menu-link">Services</a></li>
                 <li class="menu-item"><a href="index.php#testimonials" class="menu-link">Testimonial</a></li>
                 <li class="menu-item"><a href="index.php#footer" class="menu-link">Contact</a></li>
-                <li class="menu-item"><a href="register.php" class="menu-link">Register</a></li>
-                <li class="menu-item"><a href="login.php" class="menu-link active-link text-light">Login</a></li>
+                <li class="menu-item"><a href="register.php" class="menu-link active-link text-light">Register</a></li>
+                <li class="menu-item"><a href="login.php" class="menu-link">Login</a></li>
               
               </ul>
             </div>
           </section>
         </div>
       </nav>
-        </div>
-        <!--form-->
-        <form action="login.php" method="post">
-            <div class="container bg-light my-5 py-4 px-5 rounded opacity-25">
-                <h1 class="fs-1">Login</h1>
-                <p>Please fill in this form to Login in to your account.</p>
-                <hr>
-                
-                <!--If any error it will be printed here-->
-                <?php if(!empty($error)) { ?>						
-                    <div class="error alert alert-danger">
-                      <i class="bi bi-exclamation-triangle"></i>
-                        <?php echo $error;?>
-                    </div>
-				        <?php } ?>
+    </div>
+    <form action="pwd-change.php" method="post">
+        <div class="container bg-light my-5 py-4 px-5 rounded">
+            <h1 class="fs-1">Update Profile</h1>
+            <p>Please update your details filled in this form.</p>
+            <hr>
+            
+            <!--If any error it will be printed here-->
+            <?php if(!empty($error)) { ?>						
+                <div id="error" class="error alert alert-danger" role="alert">
+                  <i class="bi bi-exclamation-triangle"></i>
+                  <?php echo $error;?>
+                </div>
+            <?php } ?>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="o-pwd">Old Password</label>
+                <input type="Password" class="form-control mt-2" id="old" vlaue="" placeholder="Old Password" name="o-pwd" aria-label="o-pwd" required />
+              </div>
+                <div class="col-md-6">
+                  <label for="n-pwd">New Password</label>
+                  <input type="password" class="form-control mt-2" id="n-pwd" value="" placeholder="New Password" name="n-pwd" aria-label="n-pwd" required />
+                </div>
+            </div>
+            <hr>
+            <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
 
-                <div class="row my-3">                    
-                    <div class="col">
-                        <label for="email" class="form-label">Username</label>
-                        <input type="email" class="form-control" id="email" placeholder="Email" name="email" aria-describedby="email" required />
-                    </div>
-                </div>
-                <div class="row pb-3" class="pb-1">
-                    <div class="col">
-                        <label for="pwd">Password</label>
-                    </div>
-                </div>
-                <div class="row pb-3" class="pb-1">
-            <div class="col">
-              <!--password-->
-          <input type="password" class="form-control" placeholder="Password" name="pwd" id="pwd" required />
-          <!-- An element to toggle between password visibility -->
-          <div class="form-check my-2">
-            <input type="checkbox" class="form-check-input" id="showpwd" onclick="Show_pwd()" />
-            <label for="showpwd" class="form-check-label">Show Password</label>
-            <script>
-              function Show_pwd() {
-                var x = document.getElementById("pwd");
-                if (x.type === "password") {
-                  x.type = "pwd";
-                  console.log("Showing pwd.")
-                } else {
-                  x.type = "password";
-                  console.log("Hiding pwd.")
-                }
-              }
-            </script>
-          </div>
+            <button type="submit" class="btn btn-success w-100 px-2 py-2 fs-5">Change Password</button>
         </div>
-        <hr>
-        <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
-        <input type="submit" class="btn btn-success w-100 px-2 py-2 fs-5" value="Login" />
-        <p>Don't have an account <a href="register.php">register for free</a>.</p>
-      </div>
     </form>
+  </body>
+  <script>
+    function pwd_check() {
+      var conpwd = document.getElementById("con-pwd").value;				
+      var pwd = document.getElementById("pwd").value;
+      console.log('checking password.', conpwd, pwd);
+      return conpwd == pwd;
+    }
+      //navbar
+	  
+	const burgerMenu = document.getElementById("burger");
+    const navbarMenu = document.getElementById("menu");
+
+  // Initialize Responsive Navbar Menu
+  burgerMenu.addEventListener("click", () => {
+    burgerMenu.classList.toggle("active");
+    navbarMenu.classList.toggle("active");
+
+    if (navbarMenu.classList.contains("active")) {
+      navbarMenu.style.maxHeight = navbarMenu.scrollHeight + "px";
+    } else {
+      navbarMenu.removeAttribute("style");
+    }
+  });
+	  
+
+  </script>
   </body>
 </html>
 <style>

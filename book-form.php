@@ -8,6 +8,10 @@
     }
 ?>
 <?php
+    $museumId = null;
+    if(isset($_REQUEST['book'])) {
+      $museumId = $_REQUEST['book'];
+    }
     $error='';
     if(!empty($_POST)) {
         $servername = "localhost";
@@ -22,7 +26,7 @@
           //die("Connection failed: " . $conn->connect_error);
           $error='Error connecting to website. Please try again.';
         } else {
-          $sql = "SELECT name FROM `museums` WHERE id=".$_GET['book'];
+          $sql = "SELECT name FROM `museums` WHERE id=".$museumId;
           $result = $result = $conn->query($sql);
         
           if ($result->num_rows > 0) {
@@ -31,8 +35,7 @@
             }
           }
 
-          $sql = "INSERT INTO `booked_visit` (user_id, museum_id, name, time, date, status) VALUES (".$_SESSION['id'].", ".$_GET['book'].", '".$museum_name."', '".$_POST['time']."', '".$_POST['date']."', 'p')";
-          $result = $conn->query($sql);
+          $sql = "INSERT INTO `booked_visit` (user_id, museum_id, name, time, date, status) VALUES (".$_SESSION['id'].", ".$museumId.", '".$museum_name."', '".$_POST['time']."', '".$_POST['date']."', 'p')";
           if ($conn->query($sql) === FALSE) {
             $error='  Error in saving data. Please try again.';
           }else {
@@ -72,14 +75,22 @@
                                 <li class="menu-item"><a href="#" class="menu-link">Profile</a></li>
                                 <li class="menu-item"><a href="#" class="menu-link">Booked Visits</a></li>
                                 <li class="menu-item"><a href="book.php" class="menu-link active-link text-light">Book Visit</a></li>
-                                <li class="menu-item pro"><i class="fas fa-user-circle"></i> <?=$_SESSION['fname']." ".$_SESSION['lname'];?></li>
+                              <div class="dropdown">
+                                <button class="dropbtn menu-link pro"><i class="fas fa-user-circle"></i> <?=$_SESSION['fname']." ".$_SESSION['lname'];?>
+                                  <i class="fa fa-caret-down"></i>
+                                </button>
+                                <div class="dropdown-content">
+                                  <a href="profile.php">Profile <i class="fas fa-id-card"></i></a>
+                                  <a href="log-out.php" class="bg-danger text-light">Log-out <i class="fas fa-sign-out-alt"></i></a>
+                                </div>
+                              </div>
                             </ul>
                         </div>
                     </section>
                 </div>
             </nav>
         </header>
-        <form action="#" method="post">
+        <form action="book-form.php" method="post">
             <div class="container bg-light my-5 py-4 px-5 rounded opacity-75">
                 <h1 class="fs-1">Book a Visit</h1>
                 <p>Please fill in this form to book your visit in the museum.</p>
@@ -96,13 +107,14 @@
                 <div class="row my-3">                    
                     <div class="col-md-6">
                         <label for="book-date" class="form-label">Date</label>
-                        <input type="date" class="form-control" name="date" aria-describedby="book-date" min="<?=date("d-m-Y")?>" required />
+                        <input type="date" class="form-control" name="date" aria-describedby="book-date" min="<?=date("dd-mm-YYYY")?>" required />
                     </div>
                     <div class="col-md-6">
                         <label for="book-time" class="form-label">Time</label>
                         <input type="time" name="time" class="form-control" aria-describedby="book-time" required />
                     </div>
                     <div class="col-12 mt-3 justify-content-center">
+                        <input type="hidden" name="book" value="<?=$museumId;?>" />
                         <button type="submit" class="btn btn-success">Book a Visit for this date and time.</button>
                     </div>
                 </div>
@@ -134,6 +146,45 @@
     text-decoration: none;
 }
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap");
+
+/* Nav Drop-Down CSS */
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: black;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  text-transform: uppercase;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+/* Drop-Down CSS Ends Here */
 
 /*  ===== VARIABLE ======  */
 :root {
@@ -328,7 +379,6 @@ video {
   justify-content: center;
   align-items: center;
   gap: 2rem;
-	margin-top: 10px;
 }
 .navbar .menu-link {
   font-family: inherit;

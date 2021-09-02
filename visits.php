@@ -22,9 +22,9 @@
   }
 
   if(!empty($_GET['del'])) {
-    $sql = "DELETE * FROM `booked_visit` WHERE id=".$_GET['del'];
+    $sql = "DELETE FROM `booked_visit` WHERE id=".$_GET['del'];
     $conn->query($sql);
-    
+    header("Location: visits.php");
   }
 
   $sql = "SELECT * FROM `booked_visit` WHERE user_id='".$_SESSION['id']."' AND status='p'";
@@ -40,11 +40,13 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/525fd5b530.js"crossorigin="anonymous"></script>
+    <title>Booked Visits</title>
 </head>
 <div class="body"></div>
-<header>
+<header id="myHeader">
       
   <nav class="navbar">
     <div class="container">
@@ -64,7 +66,15 @@
             <li class="menu-item"><a href="visits.php" class="menu-link active-link text-light">Booked Visits</a></li>
             <li class="menu-item"><a href="history.php" class="menu-link">Visit History</a></li>
             <li class="menu-item"><a href="book.php" class="menu-link">Book Visit</a></li>
-            <li class="menu-item pro"><i class="fas fa-user-circle"></i> <?=$_SESSION['fname']." ".$_SESSION['lname'];?></li>
+            <div class="dropdown">
+              <button class="dropbtn menu-link pro"><i class="fas fa-user-circle"></i> <?=$_SESSION['fname']." ".$_SESSION['lname'];?>
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-content">
+                <a href="profile.php">Profile <i class="fas fa-id-card"></i></a>
+                <a href="log-out.php" class="bg-danger text-light">Log-out <i class="fas fa-sign-out-alt"></i></a>
+              </div>
+            </div>
           </ul>
         </div>
       </section>
@@ -86,6 +96,7 @@
       <?php
           if ($visits->num_rows > 0) {
             while($row = $visits->fetch_assoc()) {
+
               $date=date_create($row['date']);
               $arrTime = explode(':',$row['time']);
               if ($arrTime[0]>12) {
@@ -117,20 +128,35 @@
                           <span class="d-inline-block rounded-circle" style="width: 15px;height: 15px;background-color: Red"> </span>
                           <small class="ml-1 text-secondary">Pending</small>
                       </div>
-                      <a href="museum.php?museum='.$row['museum_id'].'"><button class="custom-btn btn-1" style="margin-top: 25px;">Visit</button></a>
-                      <a href="visits.php?del='.$row['id'].'"><button class="custom-btn btn-2" style="margin-top: 25px; margin-left: 200px" onclick="return confirm(\'Are you sure you want to delete this museum visit?\');"><i class="fa fa-trash"></i> Delete</button></a>
+                      <a href="museum.php?museum='.$row['museum_id'].'&id='.$row["id"].'"><button class="custom-btn btn-1" style="margin-top: 25px;">Visit</button></a>
+                      <a href="visits.php?del='.$row['id'].'"><button class="custom-btn btn-2 ms-1 ms-md-5" style="margin-top: 25px;" onclick="return confirm(\'Are you sure you want to delete this museum visit?\');"><i class="fa fa-trash"></i> Delete</button></a>
                 
                   </div>
               </div>
           </div>';
             }
-          } else {
+          } 
+          else {
             echo "You don't have any booked visit for any museum yet. <a href='book.php'> Book a Visit Now</a>";
           }
         ?>
     </div>
 </div>
 </html>
+<script>
+  window.onscroll = function() {myFunction()};
+
+  var header = document.getElementById("myHeader");
+  var sticky = header.offsetTop;
+
+  function myFunction() {
+    if (window.pageYOffset > sticky) {
+      header.classList.add("header-scrolled");
+    } else {
+      header.classList.remove("header-scrolled");
+    }
+  }
+</script>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
@@ -152,6 +178,45 @@ a:hover {
 }
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap");
 
+/* Nav Drop-Down CSS */
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: black;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  text-transform: uppercase;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+/* Drop-Down CSS Ends Here */
+
 /*  ===== VARIABLE ======  */
 :root {
   --primary-clr: hsl(237, 20%, 43%);
@@ -172,6 +237,12 @@ a:hover {
     display: block;
 }
 
+.header-scrolled {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 20;
+}
 
 .pro {
     font-family: inherit;
