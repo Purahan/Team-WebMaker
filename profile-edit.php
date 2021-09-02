@@ -44,7 +44,6 @@
         }
       } else {
         $error='Username or Password is incorrect.';
-        return;
       }
     }
     $conn->close();

@@ -20,7 +20,6 @@
     //Check connection
     if ($_POST['con-pwd'] != $_POST['pwd']) {
       $error = '  Confirmed Password is incorrect.';
-      return;
     }
     if ($conn->connect_error) {
       //die("Connection failed: " . $conn->connect_error);
