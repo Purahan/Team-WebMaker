@@ -328,6 +328,7 @@ video {
   justify-content: center;
   align-items: center;
   gap: 2rem;
+	margin-top: 10px;
 }
 .navbar .menu-link {
   font-family: inherit;
