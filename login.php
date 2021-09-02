@@ -28,7 +28,6 @@
       if ($result->num_rows > 0) {
       // output data of each row
         while($row = $result->fetch_assoc()) {
-          echo "name:".$row["first_name"]."<br> Email: ".$row["email"]."<br>";
           //$_SESSION['id'] = $row["Username"];
           $_SESSION['id'] = $row['id'];
           $_SESSION['fname'] = $row["first_name"];
