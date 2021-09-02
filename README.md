@@ -2,6 +2,8 @@
 
 This is the link for the documentation: https://docs.google.com/document/d/1V_STaOF1Ncmy5Sj6TnWoL4YXh3F3h1G1/edit?usp=sharing&ouid=101877529729665335654&rtpof=true&sd=true
 
+#### Our Databse Design has been uploaded in "muetour.sql" file.
+
 ### Technologies Used
 * HTML 5
 * CSS 3
