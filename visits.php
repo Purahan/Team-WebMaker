@@ -118,7 +118,7 @@
                           <small class="ml-1 text-secondary">Pending</small>
                       </div>
                       <a href="museum.php?museum='.$row['museum_id'].'"><button class="custom-btn btn-1" style="margin-top: 25px;">Visit</button></a>
-                      <a href="visits.php?del='.$row['id'].'"><button class="custom-btn btn-2" style="margin-top: 25px; margin-left: 200px" onclick="return confirm(\'Are you sure you want to delete this museum visit?\');" role="button"><i class="fa fa-trash"></i> Delete</button></a>
+                      <a href="visits.php?del='.$row['id'].'"><button class="custom-btn btn-2" style="margin-top: 25px; margin-left: 200px" onclick="return confirm(\'Are you sure you want to delete this museum visit?\');"><i class="fa fa-trash"></i> Delete</button></a>
                 
                   </div>
               </div>

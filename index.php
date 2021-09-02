@@ -1,3 +1,7 @@
+<?php
+  // Session Start
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,30 +10,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/525fd5b530.js"crossorigin="anonymous"></script>
   </head>
   <body>
     <!-- ===== HEADER ====== -->
     <div class="hero">
-      <header>
-        <!-- logo -->
-        <a class="logo" href="#">Name</a>
-        <!-- navbar -->
-        <nav class="nav-bar">
-          <ul class="nav-items">
-            <li class="nav-item"><a href="#" class="nav-link">HOME</a></li>
-            <li class="nav-item"><a href="#about-us" class="nav-link">ABOUT</a></li>
-            <li class="nav-item"><a href="#services" class="nav-link">SERVICES</a></li>
-            <li class="nav-item"><a href="#testimonials" class="nav-link">TESTIMONIALS</a></li>
-            <li class="nav-item"><a href="#footer" class="nav-link">CONTACT</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">REGISTER</a></li>
-            <li class="nav-item"><a href="login.php" class="nav-link">LOGIN</a></li>
-          </ul>
-        </nav>
-        <div class="menu-icons">
-          <i class="bx bx-menu"></i>
-          <i class="bx bx-x"></i>
-        </div>
-      </header>
+
+      <?php
+        if(!isset($_SESSION['id'])){
+          echo '<header id="myHeader">
+          <!-- logo -->
+          <a class="logo" href="#">Muetour</a>
+          <!-- navbar -->
+          <nav class="nav-bar">
+            <ul class="nav-items">
+              <li class="nav-item"><a href="#" class="nav-link">HOME</a></li>
+              <li class="nav-item"><a href="#about-us" class="nav-link">ABOUT</a></li>
+              <li class="nav-item"><a href="#services" class="nav-link">SERVICES</a></li>
+              <li class="nav-item"><a href="#testimonials" class="nav-link">TESTIMONIALS</a></li>
+              <li class="nav-item"><a href="#footer" class="nav-link">CONTACT</a></li>
+              <li class="nav-item"><a href="register.php" class="nav-link">REGISTER</a></li>
+              <li class="nav-item"><a href="login.php" class="nav-link">LOGIN</a></li>
+            </ul>
+          </nav>
+          <div class="menu-icons">
+            <i class="bx bx-menu"></i>
+            <i class="bx bx-x"></i>
+          </div>
+        </header>';  
+        }
+        else {
+          echo '<header id="myHeader">
+          <!-- logo -->
+          <a class="logo" href="#">Muetour</a>
+          <!-- navbar -->
+          <nav class="nav-bar">
+            <ul class="nav-items">
+              <li class="nav-item"><a href="#" class="nav-link">HOME</a></li>
+              <li class="nav-item"><a href="#services" class="nav-link">PROFILE</a></li>
+              <li class="nav-item"><a href="visits.php" class="nav-link">BOOKED VISITS</a></li>
+              <li class="nav-item"><a href="history.php" class="nav-link">VISIT HISTORY</a></li>
+              <li class="nav-item"><a href="book.php" class="nav-link">BOOK VISIT</a></li>
+              <li class="nav-item pro" style="text-transform: uppercase;"><i class="fas fa-user-circle"></i> '.$_SESSION["fname"].' '.$_SESSION["lname"].'</li>
+            </ul>
+          </nav>
+          <div class="menu-icons">
+            <i class="bx bx-menu"></i>
+            <i class="bx bx-x"></i>
+          </div>
+        </header>';
+        }
+      ?>
       <!-- ===== BODY ====== -->
       <!-- home section -->
       <section id="hero" class="section_1 home container">
@@ -60,7 +91,7 @@
     </section>
     <!-- services section -->
     <section id="services" class="section_3 services container">
-      <h2 class="services-title title">Services (Name) give to their customers</h2>
+      <h2 class="services-title title">Services that we give to our customers</h2>
       <div class="services-container">
         <div class="service service-1">
           <span>01</span>
@@ -106,7 +137,7 @@
             <h6>From Paris</h6>
             <br>
                     
-            <p class="testy-monial-story">The best thing of (name) is that we don't have to pay anything its free.</p>
+            <p class="testy-monial-story">The best thing of Muetour is that we don't have to pay anything its free.</p>
           </div>
 
           <div class="testimonial glide_slide">
@@ -207,20 +238,55 @@ body {
   flex-direction: column;
 }
 /*  ===== HEADER ======  */
+.header-scrolled {
+  background-color: var(--white-clr);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 40;
+  opacity: 0.8;
+}
+
+.pro {
+  color: #fff;
+  font-size: 1.1rem;
+  letter-spacing: 0.1rem;
+  font-weight: 500;
+}
+
+.header-scrolled .pro {
+  color: #000;
+}
+
 header {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 .logo {
+  font-family: inherit;
   font-size: 2rem;
   font-weight: bold;
   text-decoration: none;
-  color: var(--white-clr);
+  color: #fff;
+  text-transform: uppercase;
 }
+
+.header-scrolled .logo {
+  color: hsl(255, 100%, 60%);
+}
+.header-scrolled .logo:hover {
+  color: #0056b3;
+}
+
 .nav-items {
   display: flex;
 }
+
+.header-scrolled .nav-link{
+  color: hsl(0, 0%, 7%);
+}
+
 .nav-item {
   margin-left: 1.5rem;
 }
@@ -265,6 +331,10 @@ header {
 }
 .show-icon {
   display: block !important;
+}
+.header-scrolled .bx-menu, .header-scrolled .bx-x {
+  background-color: #fff;
+  color: #000;
 }
 /*  ===== BODY ========  */
 .hero {
@@ -781,5 +851,18 @@ closeMenu.addEventListener("click", (e) => {
     closeMenu.classList.remove("show-icon");
   }
 });
+
+window.onscroll = function() {myFunction()};
+
+var header = document.getElementById("myHeader");
+var sticky = header.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset > sticky) {
+    header.classList.add("header-scrolled");
+  } else {
+    header.classList.remove("header-scrolled");
+  }
+}
 
 </script>
