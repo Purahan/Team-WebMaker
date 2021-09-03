@@ -20,7 +20,7 @@ This is the link for the documentation: [Click me, I am the link for this projec
 * Google (For all the images)
 * Google Arts and Cultures (For Virtual Museum Tours)
 * FontAwesome (For icons)
-* Bootstrap (For icons and css for responsiv)
+* Bootstrap (For icons and css for responsiveness)
 * Cloudflare (For jquery and and css)
 
 ### Team Credits
