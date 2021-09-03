@@ -21,7 +21,7 @@ This is the link for the documentation: [Click me, I am the link for this projec
 * Google Arts and Cultures (For Virtual Museum Tours)
 * FontAwesome (For icons)
 * Bootstrap (For icons and css for responsiveness)
-* Cloudflare (For jquery and and css)
+* Cloudflare (For jquery and css)
 
 ### Team Credits
 * Purahan Gupta (Backend Handler, Museum Tour, Front End Handler)
